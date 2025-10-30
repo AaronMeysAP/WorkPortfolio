@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AARON MEYS | Design Portfolio</title>
+    <link rel="icon" href="/images/favicon.ico" style="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        
+        .hero-text {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .sharp-corners {
+            border-radius: 0;
+        }
+        
+
+        
+        .grid-masonry {
+            grid-template-rows: masonry;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .float-animation:hover {
+    animation-play-state: paused;
+}
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+        
+        .glitch:hover {
+            animation: glitch 0.1s linear infinite;
+            color: #ff00ff;
+            text-shadow: 2px 2px 0 #00ffff, -2px -2px 0 #ffff00;
+        }
+        
+        .text-outline {
+            -webkit-text-stroke: 1px #f5f5f5;
+            color: transparent;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-stack {
+                flex-direction: column;
+            }
+            
+            .mobile-full {
+                width: 100% !important;
+            }
+        }
+         .overlay {
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transform: translateY(100%);
+        }
+        .overlay.active {
+            transform: translateY(0);
+        }
+
+        .video-container.top {
+
+            aspect-ratio:  16/9;
+
+        }
+        .video-container {
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .large-video-container {
+            padding-bottom: 45%; /* Adjusted aspect ratio for larger view */
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 0px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-90 backdrop-blur-md py-4 px-6 border-b border-gray-800">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold hero-text text-white text-outline hover:text-red transition-colors">AARON MEYS</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#work" class="text-lg uppercase hover:text-purple-400 transition-colors glitch">Work</a>
+                <a href="#about" class="text-lg uppercase hover:text-cyan-400 transition-colors glitch">About</a>
+                <a href="#contact" class="text-lg uppercase hover:text-yellow-400 transition-colors glitch">Contact</a>
+            </div>
+            <button class="md:hidden" id="menu-toggle">
+                <i data-feather="menu" class="text-white"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-black z-40 hidden flex-col items-center justify-center space-y-8">
+        <a href="#work" class="text-3xl uppercase hover:text-purple-400 transition-colors">Work</a>
+        <a href="#about" class="text-3xl uppercase hover:text-cyan-400 transition-colors">About</a>
+        <a href="#contact" class="text-3xl uppercase hover:text-yellow-400 transition-colors">Contact</a>
+        <button id="close-menu" class="absolute top-8 right-8">
+            <i data-feather="x" class="text-white text-3xl"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="container mx-auto flex mobile-stack items-center">
+            <div class="w-1/2 mobile-full mb-12 md:mb-0">
+                <h1 class="text-7xl md:text-9xl hero-text mb-6 leading-tight">
+                    <span class="block text-purple-400">MOTION</span>
+                    <span class="block text-cyan-400">DESIGNED</span>
+                    <span class="block text-yellow-400">BY ME </span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-lg">
+                    Eager to learn about the ins and outs of (3d) motion graphics. Currently seeking internship opportunities to bring my bold visions to life.
+                </p>
+                <a href="#work" class="inline-block px-8 py-4 bg-white text-black font-bold uppercase hover:bg-purple-400 transition-colors sharp-corners">
+                    Interested?
+                </a>
+            </div>
+            <div class="w-1/2 mobile-full flex justify-center float-animation">
+                <div class="video-container.top w-full max-w-2xl sharp-corners">
+                     <p>T A K E _ A _ P E E K !</p>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1123599078?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Showreel_Versie_1"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Work Section -->
+    <section id="work" class="py-20 px-6 bg-gray-900">
+
+        <div class="container mx-auto">
+            <h2 class="text-5xl md:text-7xl hero-text mb-16 text-center text-transparent text-outline">
+                SELECTED WORKS
+            </h2>
+            
+            <div class="container mx-auto px-4 py-12">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Video Card 1 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay1')">
+                <div class="video-container relative">
+                 <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/_fXhmddhh0g?si=KDweMmLWbd86vHpu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Sports Commercial</h2>
+                    <p class="text-gray-400 line-clamp-3">A running commercial made for the 'Schokz' brand. 
+                        
+                        Shot, directed, and edited by me. 
+                        <br>
+                        Music: 'Breathe' - The Prodigy.
+                    </p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="bg-gray-800  overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay2')">
+                <div class="video-container relative bg-black">
+                    <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1124245222?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="2425_S3DMG_MeysA_Opdracht04_LogoAnimatie02"></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Logo Animation</h2>
+                    <p class="text-gray-400 line-clamp-3">An abstract, simulation heavy logo animation for Adult Swim. <br> Made in Blender.</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay3')">
+                <div class="video-container relative">
+                 <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/g0kUqQ-_JOg?si=sALId27HrTUE-Mt3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Animated Explainer Video</h2>
+                    <p class="text-gray-400 line-clamp-3">A 2d animated explainer video for a fictional event. 
+                        <br>
+                        Mix of rigging and frame by frame.
+                        
+                        
+                    </p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 4 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay4')">
+                <div class="video-container relative">
+                 <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/w42_T5DGXCU?si=ZOkE7eRMpDeg9Z3Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">SOUNDCLOUD x LOOP commercial</h2>
+                    <p class="text-gray-400 line-clamp-3">A Fictive brand collaboration commercial/product showcase.
+                        <br>
+                         Made in Blender.
+                    
+                        
+                    </p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 5 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay5')">
+                <div class="video-container relative">
+                    <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/UfQwyJjLQZE?si=hXT_FPAfPodC1-hM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">3D Claymation Logo animation</h2>
+                    <p class="text-gray-400 line-clamp-3">A short exploration of 3d character animation.</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 6 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay6')">
+                <div class="video-container relative">
+                    <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/y9Adrv_2kSA?si=EggR08d2WWF2fmDJ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">The Ubered Eaths | an Uber Eats commercial</h2>
+                    <p class="text-gray-400 line-clamp-3">A goofy, medieval take on the food delivery service advertisements</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 7 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay7')">
+                <div class="bg-white video-container relative">
+                    <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1124606781?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Logo animation</h2>
+                    <p class="text-gray-400 line-clamp-3">A short logo animation that flows one logo into the other.</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 8 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay8')">
+                <div class="video-container relative">
+                        <img class="absolute h-full w-full" src="/images/illustratie tumbnail.png" alt="">                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Illustration Work</h2>
+                    <p class="text-gray-400 line-clamp-3">Some of my classical or digital illustration work.</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 9 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay9')">
+                <div class="video-container relative">
+                    <iframe class="bg-black absolute w-full h-full" src="https://player.vimeo.com/video/1125154782?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">'SAP' commercial</h2>
+                    <p class="text-gray-400 line-clamp-3">My very first motion grahics project.</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Video Card 10 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay10')">
+                <div class="bg-white video-container relative">
+                    <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/gIdy4dDZJW0?si=HAnZEcOLqlUJIpAH" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Car Commercial</h2>
+                    <p class="text-gray-400 line-clamp-3">Short Car commercial made in Unreal engine 5</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 11 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay11')">
+                <div class="bg-black video-container relative">
+                    <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1132104759?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Water Caustics animation</h2>
+                    <p class="text-gray-400 line-clamp-3">A short 3d animation test</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Card 12 -->
+            <div class="bg-gray-800 overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer" onclick="toggleOverlay('overlay12')">
+                <div class="bg-white video-container relative">
+                    <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1124606781?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold mb-2">Logo animation</h2>
+                    <p class="text-gray-400 line-clamp-3">A short logo animation that flows one logo into the other.</p>
+                    <div class="mt-4 flex items-center text-white-400">
+                        <i data-feather="play-circle" class="mr-2"></i>
+                        <span>Click to expand</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+            
+
+
+        </div>
+    </section>
+
+    <!-- Overlay 1 -->
+    <div id="overlay1" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay1')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                 <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/_fXhmddhh0g?si=KDweMmLWbd86vHpu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Sports Commercial</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>'Breathe' - The Prodigy</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>december 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">A sporty, fast paced, punk heavy, sport commercial made for the 'Shokz' Earbuds. This was a school project where we filmed a (fake) sport commercial for an existing brand. </p>
+                    
+                    <p class="mb-4">Start to finish, this took about 1.5 months. Everything (except acting ofc) was done by me, including:</p>
+                    
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>Storyboarding</li>
+                        <li>Casting</li>
+                        <li>Location scouting</li>
+                        <li>Shooting</li>
+                        <li>Directing</li>
+                        <li>3d modeling</li>
+                        <li>Music Mixing</li>
+                        <li>Sound design</li>
+                        <li>Editing</li>
+                        <li>Color Grading</li>
+                    </ul>
+                    
+                    <p class="mb-4">*Super secret behind the scenes photo.*</p>
+                    <img src="/images/aaron op stelling.jpg" alt="aaron op een stelling">
+                    <br>
+                    <p class="mb-4">This was a passion project for me, and I would love to do it again! </p>
+                    
+                    <p>Actor: Nelles De Coninck | Artesis Plantijn University College Antwerp</p>
+                </div>
+                
+            
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay 2 -->
+<div id="overlay2" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay2')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  background-color bg-black overflow-hidden shadow-2xl">
+                 <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1124245222?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="2425_S3DMG_MeysA_Opdracht04_LogoAnimatie02">></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Adult Swim Logo animation</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>'Falaise' - Floating Points</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>december 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4"></p>
+                    <br>
+                    <br>
+                    <p class="mb-4">Made with the magic that is Blender Geometry nodes.</p>
+                    <p class="mb-4">Some other stuff:</p>
+                    
+
+                        <img class="cent" src="/images/blender 1.png" alt="blender file">
+                        <br>
+                        <img src="/images/blender 2.png" alt="blender geometry nodes">
+                        <br>
+                    
+                    
+                    
+                    <p class="mb-4">Not much to say here I guess, had fun making this :) </p>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 3 -->
+<div id="overlay3" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay3')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/g0kUqQ-_JOg?si=sALId27HrTUE-Mt3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">[Sport Noord Cup] Animated Explainer video</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>'kings-of-the-surf-uplifting-summer-sport-rock' - Pixabay</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>July 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">School assignment where we were tasked to create multiple promotional videos for the 'Sport Noord Cup' ~ a fictional sporting event during the summer.</p>
+                    
+                    <p class="mb-4">The video contains a mix of *required* rigging, combined with traditional frame by frame animation and motion graphics.</p>
+                    
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>Made through a combination of Adobe Animate, Premiere pro, After effects and Photoshop</li>
+                        <li>All backgrounds are made by me.</li>
+                        <li>Voice acting and sound mixing is done by me.</li>
+                        <li>over 1800 different frames drawn</li>
+                    </ul>
+                    
+
+                    <p class="text-3xl mb-1">Some of the behind the scenes work for this project...</p>
+                    <br>
+                    <p class="mb-4">Moodboard and pitch [In Dutch]:</p>
+                   
+
+                    <img src="images/moodboard snc.png" alt="moodboard and pitch">
+
+                    <br>
+                   <p class="mb-4">Character sheet of the final characters:</p>
+                    <img src="/images/snc charater choice.png" alt="character sheet">
+
+                    <br>
+                    <p>School Project | Artesis Plantijn University college Antwerp </p>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 4 -->
+<div id="overlay4" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay4')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/w42_T5DGXCU?si=ZOkE7eRMpDeg9Z3Z" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">SOUNDCLOUD x LOOP commercial / product showcase</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>'Hear it twize' - Golumm</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>March 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">We were tasked with creating a 3D commercial for a fictional brand collab between 'LOOP' and a brand of choice.</p>
+                    
+                    <p class="mb-4">In this case I chose SOUNDCLOUD, as they were both music related lol.  </p>
+                    
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>Everything is modeled from scratch in Blender.</li>
+                        <li>Music is from SOUNDCLOUD, but slightly altered and cut.</li>
+                        <li>The epic lightning strike is a comped video, with a 3d cloud, lights and assets from Youtube.</li>
+                    </ul>
+                    
+                    <img src="/images/loop 1.png" alt="making of the soundcloud cloud">
+                    <br>
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>The expanded view was a required part of the video, clearly showing the differend parts.</li>
+                    </ul><br>
+                    <p>Made in: Blender | School Task </p>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 5 -->
+<div id="overlay5" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay5')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/UfQwyJjLQZE?si=hXT_FPAfPodC1-hM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">3D Logo animation for GDM</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>'The William tell act' - Charlie Chaplin</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>November 2024</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">A short 3D claymation logo animation for the 'Graphic Digital Media' field of study.</p>
+                    
+                    <p class="mb-4">Made in Blender, with procedural textures from BlenderKit.</p>
+                    
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>Model(s) by me</li>
+                        <li>First time using a self made rig</li>
+                        <li>Sound design by me</li>
+                        <li>He looks sort of like an imposter from Among Us, looking back on it...</li>
+                    </ul>
+                    
+                    <p class="mb-4">Fun fact! This was made in exactly 1 (one) afternoon lmao </p>
+                    
+                    <p> Made in: Blender | School assignment | Artesis Plantijn University College Antwerp</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 6 -->
+<div id="overlay6" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay6')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/y9Adrv_2kSA?si=EggR08d2WWF2fmDJ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">'The Ubered Eaths' | an Uber Eats commercial</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>Suno, Pixabay</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>January 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">A pretty unserious take on the food delivery service advertisements.</p>
+                    
+                    <p class="mb-4">Context: This is a school assignment, where we were tasked to make a food delivery ad. But it got a bit out of hand, and I ended up pushing the boundaries a bit.</p>
+                    
+                    <p class="mb-6">The briefing for this was pretty strict, so some of the scenes feel pushed in a bit in hindsight. (These scenes were demanded)</p>
+                    
+                    <p class="mb-4">Almost everything was done by me, including but not limited to:</p>
+                    
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>Storyboarding</li>
+                        <li>Location scouting</li>
+                        <li>Directing</li>
+                        <li>Comping</li>
+                        <li>Sound design</li>
+                        <li>3D comping</li>
+                        <li>Color Grading</li>
+                    </ul>
+                    
+                    <p class="text-xl mb-4" >Reflection:</p>
+                    <p class="mb-2">Looking back, this is one of my more fun, but less successful projects. I remember having a blast thinking and realising the ideas, but the project I took was larger than we thought.</p>
+                    <p class="mb-2">Most of the rotoscoping and comping was done in a time crunch, and you can definitly see that.</p>
+                    <br>
+                    <p class="mb-2">But as the famous quote goes: </p>
+                    <p class="text-xl mb-8">"Success is not final, Failure is not Fatal: At least we tried... or something." ~ Winston Churchill </p>
+                    
+                    
+                    <p class="mb-4">I think still putting this video on my portfolio is important because it shows some of my pitfalls. But maybe most importantly what aspects I still need to learn.</p>
+                    
+                    <p>Actors: Ilya Leue, Martin Deboeck | Director: Aaron Meys | Artesis Plantijn University College Antwerp</p>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 7 -->
+<div id="overlay7" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay7')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="bg-white large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1124606781?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Short Logo Animation</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>june 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">School assignment for a fictional sporting event.</p>
+                    
+                    <p class="mb-4">Here we see 3 logos that flow into each other, ending with the [SNC] Logo. </p>
+                    
+                    
+                    
+                    
+                    <p>Made i: Illustrator, After effects | School assignment | Artesis Plantijn University College Antwerp</p>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 8 -->
+<div id="overlay8" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay8')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                    <img class="absolute  w-full overflow-hidden" src="/images/illustratie tumbnail.png" alt="">            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Amazing Nature Documentary</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>Since forever haha</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">Ever since my childhood, I've always been drawing on everything that I could find. Whether they were doodles in class or full scale portraits, nothing was off the table.</p>
+                    
+                    <p class="mb-4">Aditionally I got my diploma in art school, and spent an extra year in Illustration.</p>
+                    
+                    <p class="text-xl mb-2"> Here are some examples of my illustration work:</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                        <img src="/images/tekeningen/1.png" alt="tekening">
+                        <img src="/images/tekeningen/2.png" alt="tekening">
+                        <img src="/images/tekeningen/3.png" alt="tekening">
+                        <img src="/images/tekeningen/4.png" alt="tekening">
+                        <img src="/images/tekeningen/5.png" alt="tekening">
+                        <img src="/images/tekeningen/6.png" alt="tekening">
+                        <img src="/images/tekeningen/7.png" alt="tekening">
+                        <img src="/images/tekeningen/8.png" alt="tekening">
+                        <img src="/images/tekeningen/9.png" alt="tekening">
+                        <img src="/images/tekeningen/10.png" alt="tekening">
+                        <img src="/images/tekeningen/11.png" alt="tekening">
+                        <img src="/images/tekeningen/12.png" alt="tekening">
+                        <img src="/images/tekeningen/13.png" alt="tekening">
+                        <img src="/images/tekeningen/14.png" alt="tekening">
+                        <img src="/images/tekeningen/15.png" alt="tekening">
+                        <img src="/images/tekeningen/16.png" alt="tekening">
+                        <img src="/images/tekeningen/17.png" alt="tekening">
+                        <img src="/images/tekeningen/18.png" alt="tekening">
+                        <img src="/images/tekeningen/19.png" alt="tekening">
+                        <img src="/images/tekeningen/20.png" alt="tekening">
+                        <img src="/images/tekeningen/21.png" alt="tekening">
+                        <img src="/images/tekeningen/22.png" alt="tekening">
+                        <img src="/images/tekeningen/23.png" alt="tekening">
+                        <img src="/images/tekeningen/24.png" alt="tekening">
+                        <img src="/images/tekeningen/25.png" alt="tekening">
+                        <img src="/images/tekeningen/26.png" alt="tekening">
+                        <img src="/images/tekeningen/27.png" alt="tekening">
+                        <img src="/images/tekeningen/28.png" alt="tekening">
+                        <img src="/images/tekeningen/29.png" alt="tekening">
+                        <img src="/images/tekeningen/30.png" alt="tekening">
+
+
+                    </div>
+                    
+                    <p class="mt-8 mb-4">Both analog and digital drawing is, and will probably always be, one of my passions < 3 </p>
+                    
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <!-- Overlay 9 -->
+<div id="overlay9" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay9')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="bg-black absolute w-full h-full" src="https://player.vimeo.com/video/1125154782?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Amazing Nature Documentary</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>November 2023</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">'SAP' commercial - get some punk in this drink!</p>
+                    
+                    <p class="mb-6">This short motion graphics commercial was my very first motion assignment ever, in wich I learned to use after effects and explore the boundaries of motion graphics.</p>
+                    
+                    <p class="mb-3">Some notable things to say about this video:</p>
+                    <ul class="list-disc pl-6 mb-6">
+                        <li>The assets, sush as the lemon, the sportsperson, the bottle, logo, etc etc... were given to us, and needed to all be included in the final video.</li>
+                        <li>Nor sound Nor music were allowed to be in the final product.</li>
+                        <li>The explosion is hand animated in illustrator.</li>
+                        <li>This project took about two weeks.</li>
+                    </ul>
+                    
+                    <p class="mb-8">Since it was the first project I made using After Effects, I (of course) made some clear visible mistakes. I believe it achieved its goal and still stands up well to my other work today. </p>
+                    
+                    <p>School assignment | Artesis Plantijn University College Antwerp</p>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+       <!-- Overlay 10 -->
+<div id="overlay10" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay10')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8  overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://www.youtube.com/embed/gIdy4dDZJW0?si=HAnZEcOLqlUJIpAH" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Unreal Engine 5 Car Commercial</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>Soundly</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>may 2025</span>
+                    </div>
+                </div>
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">School assignment where we were tasked to create a car commercial using Unreal</p>
+                    
+                    <p class="mb-4">This was my first time creating anything with Unreal Engine, with many ups and downs ofcourse.</p>
+                    
+                
+                    
+
+                    <p class="mt-16 text-3xl mb-1">Some of the behind the scenes work for this project...</p>
+                    <br>
+                    <p class="mb-4">Used the car (wich is an asset) to creat a visual storyboard.</p>
+                   
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                        <img src="/images/car storyboard/1.png" alt="car storyboard">
+                        <img src="/images/car storyboard/2.png" alt="car storyboard">
+                        <img src="/images/car storyboard/3.png" alt="car storyboard">
+                        <img src="/images/car storyboard/4.png" alt="car storyboard">
+                        <img src="/images/car storyboard/5.png" alt="car storyboard">
+                        <img src="/images/car storyboard/6.png" alt="car storyboard">
+                        <img src="/images/car storyboard/7.png" alt="car storyboard">
+                        <img src="/images/car storyboard/8.png" alt="car storyboard">
+                        <img src="/images/car storyboard/9.png" alt="car storyboard">
+                        <img src="/images/car storyboard/10.png" alt="car storyboard">
+                        <img src="/images/car storyboard/11.png" alt="car storyboard">
+                        <img src="/images/car storyboard/12.png" alt="car storyboard">
+                        <img src="/images/car storyboard/13.png" alt="car storyboard">
+                        <img src="/images/car storyboard/14.png" alt="car storyboard">
+                        <img src="/images/car storyboard/15.png" alt="car storyboard">
+                        <img src="/images/car storyboard/16.png" alt="car storyboard">
+                        <img src="/images/car storyboard/17.png" alt="car storyboard">
+                        <img src="/images/car storyboard/18.png" alt="car storyboard">
+                        <img src="/images/car storyboard/19.png" alt="car storyboard">
+                        <img src="/images/car storyboard/20.png" alt="car storyboard">
+                        <img src="/images/car storyboard/21.png" alt="car storyboard">
+                        <img src="/images/car storyboard/22.png" alt="car storyboard">
+                        <img src="/images/car storyboard/23.png" alt="car storyboard">
+                        <img src="/images/car storyboard/24.png" alt="car storyboard">
+                        <img src="/images/car storyboard/25.png" alt="car storyboard">
+                        <img src="/images/car storyboard/26.png" alt="car storyboard">
+                        <img src="/images/car storyboard/27.png" alt="car storyboard">
+                        <img src="/images/car storyboard/28.png" alt="car storyboard">
+                        <img src="/images/car storyboard/29.png" alt="car storyboard">
+                        <img src="/images/car storyboard/30.png" alt="car storyboard">
+                        <img src="/images/car storyboard/31.png" alt="car storyboard">
+                        <img src="/images/car storyboard/32.png" alt="car storyboard">
+                        <img src="/images/car storyboard/33.png" alt="car storyboard">
+                        <img src="/images/car storyboard/34.png" alt="car storyboard">
+                        <img src="/images/car storyboard/35.png" alt="car storyboard">
+                        <p class="mt-4 ml-2">Unfortunaly this version got scrapped. :( </p>
+                    </div>
+                    
+                    <br>
+                   <p class="mt-8 mb-4">Definitly not my best work, but under the time constrainst and with a new program, I feel like I did alright.</p>
+                    
+                    <br>
+                    <p>Made in: Unreal Engine 5, Blender | School Project | Artesis Plantijn University college Antwerp </p>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+
+       <!-- Overlay 11 -->
+<div id="overlay11" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay11')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div class="large-video-container relative mb-8 bg-black overflow-hidden shadow-2xl">
+                <iframe class="absolute w-full h-full" src="https://player.vimeo.com/video/1132104759?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-4">Water refraction/caustics animation</h1>
+                <div class="flex items-center mb-6 text-gray-400">
+                    <div class="flex items-center mr-6">
+                        <i data-feather="volume-2" class="mr-2"></i>
+                        <span>Soundly</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i data-feather="calendar" class="mr-2"></i>
+                        <span>October 2025</span>
+                    </div>
+                </div>  
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">A school project where we were tasked with creating a simulation video containing/revealing one of our initials.</p>
+                    
+                    <p class="mb-10">An experimentation project around shaders and simulation made in Blender</p>
+                  
+                    <br>
+                
+                    <p>School Project | Blender | Artesis Plantijn University college Antwerp </p>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+
+       <!-- Overlay 12 -->
+<div id="overlay12" class="overlay fixed inset-0 bg-gray-900 z-50 p-8 overflow-y-auto">
+        <div class="container mx-auto max-w-5xl">
+            <button onclick="toggleOverlay('overlay12')" class="absolute top-6 right-6 bg-gray-800 hover:bg-gray-700 rounded-full p-3 transition-all duration-300">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+          
+            
+            <div class="bg-gray-800  p-8 shadow-lg">
+                <h1 class="text-3xl font-bold mb-10">This area is currently underconstruction...</h1>
+               
+                
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-lg mb-4">More projects are on their way!! Stay tuned!</p>
+                    
+                    
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-black">
+        <div class="container mx-auto">
+            <div class="flex mobile-stack items-center">
+                <div class="w-1/2 mobile-full mb-12 md:mb-0">
+                    <h2 class="text-5xl md:text-7xl hero-text mb-8">
+                        <span class="block text-transparent text-outline">WHAT ABOUT</span>
+                        <span class="block text-cyan-400">THE DESIGNER</span>
+                    </h2>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="aspect-square bg-gray-800 sharp-corners overflow-hidden">
+                            <img src="/images/aaron.png" alt="Aaron Photographin an event" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square bg-gray-800 sharp-corners overflow-hidden">
+                            <img src="images/aaron pak 2.png" alt="Design process" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square bg-gray-800 sharp-corners overflow-hidden">
+                            <img src="images/aaron fles normaal.png" alt="Studio setup" class="w-full h-full object-cover">
+                        </div>
+                        <div class="aspect-square bg-gray-800 sharp-corners overflow-hidden">
+                            <img src="images/kamer.png" alt="Creative tools" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-1/2 mobile-full pl-12 md:pl-24">
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-bold mb-4 text-purple-400">WHO AM I?</h3>
+                        <p class="text-xl leading-relaxed mb-4">
+                            I'm a motion design student that wants to get out there and conquer the workspace. -->
+                            And hopelfully have my boundaries pushed in the process. 
+                        </p>
+                        <p class="text-xl leading-relaxed">
+                            If your project involves having an obscene amount op silly fun and occasional laughing, count me in! 
+                             Since that doesn't sound professional, maybe this will convince you: 
+                            <p class="mt-4 text-2xl text-center text-gray-400">  collaborate, facilitate, articulate, diligent, perspicacious...</p>
+                        </p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h3 class="text-3xl font-bold mb-4 text-yellow-400">SKILLS</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Blender</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">After Effects</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Videography</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Premiere Pro</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Photoshop</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Illustrator</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Figma</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Classic Illustration  </span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Friendship and love</span>
+                            <span class="px-4 py-2 bg-gray-800 sharp-corners">Creative Problem solving </span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-cyan-400">EDUCATION</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-xl font-bold">Born</h4>
+                                <p class="text-gray-400">Summer of 2003, Leuven</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold">Applied Graphic Arts</h4>
+                                <p class="text-gray-400">Sint-Lucas School of Arts, 2018-2021</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold">Graphic Media Design</h4>
+                                <p class="text-gray-400">Artesis Plantijn University College of Antwerp, 2025</p>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-5xl md:text-7xl hero-text mb-16 text-center text-transparent text-outline">
+               HIT ME UP!
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+    <form action="https://formsubmit.co/aaron.meys9@gmail.com" method="POST" class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="name" class="block text-lg font-bold mb-2">NAME</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-gray-800 border-b-2 border-purple-400 focus:outline-none focus:border-cyan-400 transition-colors sharp-corners">
+            </div>
+            <div>
+                <label for="email" class="block text-lg font-bold mb-2">EMAIL</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-gray-800 border-b-2 border-cyan-400 focus:outline-none focus:border-yellow-400 transition-colors sharp-corners">
+            </div>
+        </div>
+        <div>
+            <label for="subject" class="block text-lg font-bold mb-2">SUBJECT</label>
+            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 bg-gray-800 border-b-2 border-yellow-400 focus:outline-none focus:border-purple-400 transition-colors sharp-corners">
+        </div>
+        <div>
+            <label for="message" class="block text-lg font-bold mb-2">MESSAGE</label>
+            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-gray-800 border-b-2 border-purple-400 focus:outline-none focus:border-cyan-400 transition-colors sharp-corners"></textarea>
+        </div>
+        <div class="pt-4">
+            <button type="submit" class="px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-bold uppercase hover:from-pink-500 hover:to-yellow-500 transition-colors sharp-corners">
+                SEND MESSAGE
+            </button>
+        </div>
+    </form>
+
+                
+                <div class="mt-16 pt-8 border-t border-gray-700">
+                    <div class="flex flex-wrap justify-center gap-8">
+                        <a href="mailto:aaron.meys9@gmail.com" class="text-lg flex items-center hover:text-purple-400 transition-colors">
+                            <i data-feather="mail" class="mr-2"></i> aaron.meys9@gmail.com
+                        </a>
+                        <a href="https://www.instagram.com/aaronmeys/" class="text-lg flex items-center hover:text-cyan-400 transition-colors">
+                            <i data-feather="instagram" class="mr-2"></i> @aaronmeys
+                        </a>
+                        <a href="https://www.linkedin.com/in/aaron-meys-864301369/" class="text-lg flex items-center hover:text-yellow-400 transition-colors">
+                            <i data-feather="linkedin" class="mr-2"></i> linkedin.com/in/aaronmeys
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-black">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-xl font-bold hero-text text-transparent text-outline">AARON MEYS</a>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    © 2023 Aaron Meys. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+        
+        // Add scroll animation class
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        function toggleOverlay(id) {
+            const overlay = document.getElementById(id);
+            overlay.classList.toggle('active');
+            
+            if (overlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Close overlay when clicking outside content
+        document.querySelectorAll('.overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    toggleOverlay(this.id);
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
