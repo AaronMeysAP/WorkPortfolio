@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/general/favicon.ico" />
+  <title>Graphic Design</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="magazine.css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="works.html" class="active">work</a>
+      <a href="#" class="random-link">random</a>
+      <a href="about.html">about</a>
+      <span class="contact-nudge-wrap"><span class="contact-nudge" aria-hidden="true">&larr;</span><a href="contact.html">contact</a></span>
+    </nav>
+    <a href="works.html" class="back-link">back →</a>
+  </header>
+
+  <main class="proj-page">
+
+    <!-- ROW 1 — info card + hero image -->
+    <div class="proj-row proj-row--tall">
+
+      <div class="proj-panel proj-info">
+        <div class="proj-panel-top">
+          <span>Graphic Design</span>
+          <span>—</span>
+        </div>
+        <div class="proj-spacer">
+          <p class="proj-desc">Alongside illustration, I love the more structured side of visual work. Even though it is not my main interest right now, i have been making occasional posters and designs for over 6 years.</p>
+        </div>
+        <div class="proj-panel-bot">
+          <div class="proj-hr"></div>
+          <div class="proj-panel-foot">
+            <span>Poster Design, Layout</span>
+            <span>—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-panel proj-img proj-img--static">
+        <img src="images/Graphic Design/poster mockup.png" alt="Poster Vredesloop" />
+      </div>
+
+    </div>
+
+    <!-- ROW 2 — photos, two per row instead of three, larger with longer captions -->
+    <div class="proj-row proj-row--mid">
+
+      <div class="proj-photo">
+        <div class="proj-panel proj-img">
+          <img src="images/Graphic Design/poster mockup.png" alt="Poster Vredesloop" />
+        </div>
+        <p class="proj-photo-cap proj-photo-cap--inset">Poster design for a charity event called 'De Vredesloop', designed to be family friendly and very approachable. Additionally I did event photography at this race.</p>
+      </div>
+
+      <div class="proj-photo">
+        <div class="proj-panel proj-img">
+          <img src="images/Graphic Design/COOP POSTER_3.png" alt="Poster design" />
+        </div>
+        <p class="proj-photo-cap proj-photo-cap--inset">Poster design for a cooperative supermarket's birthday party. Both the playful illustration as well as the chaotic layout are catered to a very diverse but casual audience.</p>
+      </div>
+
+    </div>
+
+    <!-- ROW 3 — one photo, one paragraph filling the other "column" -->
+    <div class="proj-row proj-row--mid">
+
+      <div class="proj-photo">
+        <div class="proj-panel proj-img">
+          <img src="images/Graphic Design/carroussel.jpg" alt="Poster design" />
+        </div>
+        <p class="proj-photo-cap proj-photo-cap--inset">A carousel-style design made for the social media of the Belgian Red Devils, as part of a school project.</p>
+      </div>
+
+      <div class="proj-photo">
+        <div class="proj-panel proj-text">
+          <p class="proj-desc">This page is still under construction, as I am still gathering more of my graphic design works that I have previously made.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Flip-through magazine preview — a small self-contained widget,
+         see magazine.css / magazine.js. Pages 2-8 are pre-rendered as
+         full two-page spreads (one wide image, not separate left and
+         right pages), so each spread is split in two with a CSS
+         background-position crop (see .magazine-face-split) and
+         shown across two independently-hinged half-page leaves — the
+         same left-half/right-half turn a real book does, with each
+         half turning individually instead of the whole spread
+         vanishing at once. The cover and back cover are single pages
+         already, so they just fill their leaf whole. -->
+    <section class="magazine" aria-label="Graphic design, flip-through preview">
+      <div class="magazine-stage">
+
+        <div class="magazine-leaves">
+
+          <div class="magazine-leaf" data-leaf="0">
+            <div class="magazine-face magazine-face-front">
+              <img src="images/Graphic Design/magazine_Page_1.jpg" alt="Magazine cover" />
+            </div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_2.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="1">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_2.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_3.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="2">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_3.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_4.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="3">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_4.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_5.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="4">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_5.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_6.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="5">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_6.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_7.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="6">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_7.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine_Page_8.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="7">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine_Page_8.jpg');"></div>
+            <div class="magazine-face magazine-face-back">
+              <img src="images/Graphic Design/magazine_Page_9.jpg" alt="Magazine back cover" />
+            </div>
+          </div>
+
+        </div>
+
+        <button type="button" class="magazine-arrow magazine-arrow-prev" aria-label="Previous page"></button>
+        <button type="button" class="magazine-arrow magazine-arrow-next" aria-label="Next page"></button>
+
+      </div>
+
+      <div class="magazine-indicator" role="status" aria-live="polite">
+        <span class="magazine-dot" data-dot="0"></span>
+        <span class="magazine-dot" data-dot="1"></span>
+        <span class="magazine-dot" data-dot="2"></span>
+        <span class="magazine-dot" data-dot="3"></span>
+        <span class="magazine-dot" data-dot="4"></span>
+        <span class="magazine-dot" data-dot="5"></span>
+        <span class="magazine-dot" data-dot="6"></span>
+        <span class="magazine-dot" data-dot="7"></span>
+        <span class="magazine-dot" data-dot="8"></span>
+      </div>
+    </section>
+
+    <!-- Second flip-through book, same rules: page 1 is the cover,
+         page 8 is the back cover, pages 2-7 are full spreads split
+         across two half-page leaves each. This set's spreads share
+         one consistent ratio (1575:945 = 1.667), so the crop is
+         distortion-free with no exceptions. -->
+    <section class="magazine" aria-label="Graphic design, second flip-through preview">
+      <div class="magazine-stage" style="--ratio: 1.667;">
+
+        <div class="magazine-leaves">
+
+          <div class="magazine-leaf" data-leaf="0">
+            <div class="magazine-face magazine-face-front">
+              <img src="images/Graphic Design/magazine2_Page_1.jpg" alt="Magazine cover" />
+            </div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine2_Page_2.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="1">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine2_Page_2.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine2_Page_3.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="2">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine2_Page_3.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine2_Page_4.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="3">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine2_Page_4.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine2_Page_5.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="4">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine2_Page_5.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine2_Page_6.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="5">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine2_Page_6.jpg');"></div>
+            <div class="magazine-face magazine-face-back magazine-face-split magazine-face-split--left" style="background-image: url('images/Graphic Design/magazine2_Page_7.jpg');"></div>
+          </div>
+
+          <div class="magazine-leaf" data-leaf="6">
+            <div class="magazine-face magazine-face-front magazine-face-split magazine-face-split--right" style="background-image: url('images/Graphic Design/magazine2_Page_7.jpg');"></div>
+            <div class="magazine-face magazine-face-back">
+              <img src="images/Graphic Design/magazine2_Page_8.jpg" alt="Magazine back cover" />
+            </div>
+          </div>
+
+        </div>
+
+        <button type="button" class="magazine-arrow magazine-arrow-prev" aria-label="Previous page"></button>
+        <button type="button" class="magazine-arrow magazine-arrow-next" aria-label="Next page"></button>
+
+      </div>
+
+      <div class="magazine-indicator" role="status" aria-live="polite">
+        <span class="magazine-dot" data-dot="0"></span>
+        <span class="magazine-dot" data-dot="1"></span>
+        <span class="magazine-dot" data-dot="2"></span>
+        <span class="magazine-dot" data-dot="3"></span>
+        <span class="magazine-dot" data-dot="4"></span>
+        <span class="magazine-dot" data-dot="5"></span>
+        <span class="magazine-dot" data-dot="6"></span>
+        <span class="magazine-dot" data-dot="7"></span>
+      </div>
+    </section>
+
+    <a class="proj-back-text" href="works.html">alrighty, take me back!</a>
+
+  </main>
+
+  <script src="project.js"></script>
+  <script src="random-nav.js"></script>
+  <script src="contact-nudge.js"></script>
+  <script src="magazine.js"></script>
+
+</body>
+</html>

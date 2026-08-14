@@ -1,0 +1,551 @@
+/* ── Project page — dark panel layout ─────────────────────── */
+/* Shared by any project page (e.g. adult-swim.html). Copy the   */
+/* HTML file for a new project and keep linking this same file. */
+
+body {
+  background: #000000;
+}
+
+header {
+  background: #000000;
+}
+
+header nav a {
+  color: rgba(255, 255, 255, 0.93);
+}
+
+header nav a:hover {
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.93);
+}
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+
+.proj-page {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+}
+
+/* ── Rows ─────────────────────────────────────────────────── */
+
+.proj-row {
+  display: flex;
+  gap: 5px;
+  width: 100%;
+}
+
+.proj-row--tall { height: 84vh; }
+.proj-row--mid  { height: 84vh; }
+
+/* ── Generic panel ────────────────────────────────────────── */
+
+.proj-panel {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ── Cream info card ──────────────────────────────────────── */
+
+.proj-info {
+  flex: 0 0 28%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem;
+}
+
+.proj-panel-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: #777;
+}
+
+.proj-spacer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.proj-desc {
+  font-size: 0.72rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: #55534c;
+}
+
+.proj-desc a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ── Plain info card — matches the page background instead of the cream card ── */
+
+.proj-info--plain {
+  background: #000000;
+  flex: 1 1 0;
+}
+
+.proj-info--plain .proj-spacer {
+  justify-content: center;
+}
+
+.proj-info--plain .proj-desc {
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  max-width: 22rem;
+}
+
+.proj-panel-bot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.proj-hr {
+  height: 1px;
+  background: #c5c1ba;
+}
+
+.proj-panel-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: #777;
+  line-height: 1.7;
+}
+
+/* ── Image panels ─────────────────────────────────────────── */
+
+.proj-img {
+  flex: 1;
+  position: relative;
+  background: var(--proj-img-bg, #000);
+}
+
+.proj-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform: scale(0.6);
+  transform-origin: center center;
+}
+
+.proj-img.is-active img {
+  object-fit: cover;
+  transform: scale(1.1) translate(var(--img-x, 0%), var(--img-y, 0%));
+}
+
+.proj-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.proj-img--wide {
+  flex: 0 0 63%;
+}
+
+.proj-img--static img {
+  transform: none;
+}
+
+/* A text panel sized like a .proj-img, so it can stand in for a photo
+   in an otherwise photo-only row (e.g. graphic-design.html) without
+   breaking the row's flex sizing. */
+.proj-text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #000;
+}
+
+.proj-text .proj-desc {
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  max-width: 26rem;
+}
+
+/* ── Captioned photo (image + one-line caption below) ────────── */
+
+.proj-photo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  overflow: hidden;
+}
+
+.proj-photo .proj-img {
+  flex: 1;
+  min-height: 0;
+}
+
+.proj-photo-cap {
+  flex: 0 0 auto;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Slightly narrower than the image above it, so longer captions
+   (e.g. graphic-design.html) don't run flush to the same edges as
+   the zoomed-in artwork. */
+.proj-photo-cap--inset {
+  width: 92%;
+  margin: 0 auto;
+}
+
+/* ── Film section ─────────────────────────────────────────── */
+
+.proj-film {
+  background: #000000;
+  padding: 1.6rem 1.6rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+/* Reset any row-scoped width/margin constraints (see eastpak.html's vertical
+   video column) so a film block fills the screen properly once fullscreen.
+   The head label is hidden and the player is stretched edge-to-edge so it
+   behaves like a real fullscreen player instead of a maximized panel with
+   the title bar and controls still eating into the video area. */
+.proj-film:fullscreen {
+  position: relative;
+  flex: initial;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  justify-content: center;
+  background: #000;
+}
+
+.proj-film:fullscreen .proj-film-head {
+  display: none;
+}
+
+.proj-film:fullscreen .proj-player-ratio {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.proj-film:fullscreen .proj-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.9rem 1.6rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), transparent);
+}
+
+.proj-film-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Player ───────────────────────────────────────────────── */
+
+.proj-player-ratio {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 65%;
+  max-width: 100%;
+  margin: 0 auto;
+  background: #000;
+  overflow: hidden;
+}
+
+/* ── Film block sitting beside a text panel in a row (e.g. eastpak.html) ── */
+/* Instead of centering at 65% of a full-width section, it fills the row's
+   height and lets the video's real aspect ratio drive its (narrower) width. */
+
+.proj-row .proj-film {
+  flex: 0 0 26.4vw;
+  min-width: 0;
+  margin-left: auto;
+  margin-right: 10vw;
+}
+
+.proj-row .proj-film .proj-player-ratio {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* The row-scoped rules above still match while fullscreen (the Fullscreen
+   API doesn't remove the element from the DOM), and being equally specific
+   but later in the cascade they'd otherwise win and shrink the video back
+   down to its inset size. Force the true fullscreen sizing back on top. */
+.proj-row .proj-film:fullscreen {
+  flex: initial;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.proj-row .proj-film:fullscreen .proj-player-ratio {
+  height: 100%;
+}
+
+.proj-player-ratio iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.proj-overlay-play {
+  position: absolute;
+  inset: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.proj-overlay-play svg {
+  width: 42px;
+  height: 42px;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.proj-overlay-play:hover svg {
+  opacity: 0.9;
+  transform: scale(1.07);
+}
+
+.proj-overlay-play.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Controls bar ─────────────────────────────────────────── */
+
+.proj-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+  width: 65%;
+  max-width: 100%;
+  margin: 0 auto;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.proj-controls.is-idle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.proj-ctrl {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+}
+
+.proj-ctrl:hover {
+  opacity: 0.85;
+}
+
+.proj-ctrl svg {
+  width: 13px;
+  height: 13px;
+  display: block;
+}
+
+.proj-prog {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  transition: height 0.15s;
+}
+
+.proj-prog:hover {
+  height: 2px;
+}
+
+.proj-prog-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+.proj-time {
+  font-family: monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+  opacity: 0.25;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Volume control ───────────────────────────────────────── */
+
+.proj-vol {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.proj-vol-slider {
+  width: 0;
+  opacity: 0;
+  margin-left: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: width 0.25s ease, opacity 0.2s ease, margin-left 0.25s ease;
+}
+
+.proj-vol:hover .proj-vol-slider,
+.proj-vol:focus-within .proj-vol-slider {
+  width: 56px;
+  opacity: 1;
+  margin-left: 0.6rem;
+}
+
+.proj-vol-slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 56px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1px;
+  outline: none;
+  cursor: pointer;
+}
+
+.proj-vol-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.proj-vol-slider input[type="range"]:hover::-webkit-slider-thumb,
+.proj-vol-slider input[type="range"]:active::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.proj-vol-slider input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.7;
+  cursor: pointer;
+  border: none;
+}
+
+.proj-vol-slider input[type="range"]::-moz-range-track {
+  background: rgba(255, 255, 255, 0.15);
+  height: 2px;
+  border-radius: 1px;
+}
+
+.i-pause,
+.i-mute {
+  display: none;
+}
+
+/* ── Mobile — one image per row instead of three side by side ── */
+
+@media (max-width: 640px) {
+  .proj-row {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .proj-info {
+    flex: none;
+    width: 100%;
+  }
+
+  .proj-row--tall .proj-img,
+  .proj-img--wide {
+    flex: none;
+    width: 100%;
+    height: 70vh;
+  }
+
+  .proj-photo {
+    flex: none;
+    width: 100%;
+    height: 60vh;
+  }
+
+  .proj-row .proj-film {
+    flex: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ── Bottom back link ─────────────────────────────────────── */
+
+.proj-back-text {
+  display: block;
+  text-align: center;
+  padding: 1.4rem 0 0.6rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.proj-back-text:hover {
+  color: rgba(255, 255, 255, 0.75);
+}

@@ -1,0 +1,243 @@
+/* ── Flip-through magazine preview ─────────────────────────────
+   The source pages aren't uniform: page 1 and page 9 are single
+   portrait pages (cover / back cover), and pages 2-8 are each
+   pre-rendered as a full two-page spread — one wide image, not two
+   separate page files. To get a real page-by-page turn (only half a
+   spread moves at a time, not the whole thing), each spread is
+   split in two purely with CSS: a half-width leaf face sets that
+   spread image as its background at 100% height with
+   background-position left/right, so it shows an undistorted half
+   without needing the image pre-cropped into separate files (see
+   .magazine-face-split below). The two halves of one spread then
+   live on the back of one leaf and the front of the next, so turning
+   past a spread happens as two independent half-page flips — the
+   left half stays while the right half turns, exactly like a real
+   book — rather than the spread appearing/vanishing as a unit.
+
+   Every leaf is a half-width page hinged at the spine (the stage's
+   center), lying flat on the right at rest and rotating 180° to lie
+   flat on the left when flipped — the standard book-flip trick.
+   Stacking needs live z-index management: the "not yet turned" pile
+   needs its earliest page on top, the "already turned" pile needs
+   its most recently turned page on top — opposite orderings of the
+   same list. magazine.js recomputes both whenever the current page
+   changes; see the render() function there. ── */
+
+.magazine {
+  margin: clamp(2rem, 5vw, 3.5rem) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Two magazine books stacked on one page (see graphic-design.html)
+   need clearly deliberate separation, not just whatever their normal
+   margins happen to collapse to. */
+.magazine + .magazine {
+  margin-top: clamp(5rem, 11vw, 8rem);
+}
+
+/* --ratio is set per-instance (inline, on .magazine-stage) to match
+   that book's actual exported spread ratio, so pages fill the stage
+   with no letterboxed whitespace regardless of which magazine this
+   is — object-fit: cover on each face handles the odd spread
+   exported at a slightly different ratio with a small, unnoticeable
+   crop rather than a visible gap. */
+.magazine-stage {
+  --ratio: 1.64;
+  position: relative;
+  width: min(78vw, 62rem, calc(70vh * var(--ratio)));
+  aspect-ratio: var(--ratio);
+  perspective: 2400px;
+  background: #0c0c0c;
+  border-radius: 6px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), 0 2px 0 rgba(255, 255, 255, 0.03) inset;
+}
+
+/* Spine crease — a static shadow down the center. Reads correctly
+   for both the full spreads (a real center fold) and the inset
+   cover/back-cover (their binding edge lands in the same place). */
+.magazine-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  width: 2.5%;
+  margin-left: -1.25%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 120;
+}
+
+.magazine-leaves {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  perspective: 2400px;
+}
+
+.magazine-leaf {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.magazine-leaf.is-flipped {
+  transform: rotateY(-180deg);
+}
+
+.magazine-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0c0c0c;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.magazine-face-back {
+  transform: rotateY(180deg);
+}
+
+.magazine-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* A spread image cropped to just its left or right half via
+   background-position, at a half-width leaf whose own aspect ratio
+   already matches "half a spread" almost exactly (see the stage's
+   aspect-ratio below) — so the crop shows an undistorted half with
+   no visible seam once its matching other half sits right next to
+   it on the neighboring leaf. */
+.magazine-face-split {
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.magazine-face-split--left {
+  background-position: left center;
+}
+
+.magazine-face-split--right {
+  background-position: right center;
+}
+
+/* ── Arrows — sleek solid white triangles, drawn with the classic
+   zero-size + transparent-border trick rather than an icon font or
+   SVG, sitting clear of the stage so they never clip the pages. ── */
+
+.magazine-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.75rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.magazine-arrow::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 0.85rem solid transparent;
+  border-bottom: 0.85rem solid transparent;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+  transition: filter 0.2s ease;
+}
+
+.magazine-arrow-prev::before {
+  border-right: 1.15rem solid #fff;
+}
+
+.magazine-arrow-next::before {
+  border-left: 1.15rem solid #fff;
+}
+
+.magazine-arrow:hover::before {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.55));
+}
+
+.magazine-arrow-prev {
+  left: -3.25rem;
+}
+
+.magazine-arrow-next {
+  right: -3.25rem;
+}
+
+.magazine-arrow.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Page indicator — a subtle row of dots, not page numbers ── */
+
+.magazine-indicator {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.magazine-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.magazine-dot.is-active {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.3);
+}
+
+@media (max-width: 640px) {
+  .magazine-arrow-prev {
+    left: 0.25rem;
+  }
+
+  .magazine-arrow-next {
+    right: 0.25rem;
+  }
+
+  .magazine-arrow::before {
+    border-top-width: 0.7rem;
+    border-bottom-width: 0.7rem;
+  }
+
+  .magazine-arrow-prev::before {
+    border-right-width: 0.95rem;
+  }
+
+  .magazine-arrow-next::before {
+    border-left-width: 0.95rem;
+  }
+}

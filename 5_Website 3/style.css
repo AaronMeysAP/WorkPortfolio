@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --gap: 1.5rem;
+  --columns: 12; /* base grid units — JS assigns spans of 3 (4-per-row) or 4 (3-per-row) */
+  --header-height: 3rem;
+
+  --ratio-1x1:  1 / 1;
+  --ratio-5x4:  5 / 4;
+  --ratio-16x9: 16 / 9;
+  --ratio-9x16: 9 / 16;
+  --ratio-21x9: 21 / 9;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #fff;
+  padding: 1rem 1.5rem;
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+header a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+header a:hover {
+  opacity: 0.5;
+}
+
+/* ── Contact nudge — a small arrow that periodically points at the
+   "contact" link. Absolutely positioned inside its own relative
+   wrapper so it never occupies a flex slot in the nav — hidden it
+   adds zero width and can't shift the other links, wipe in/out or
+   not. The reveal uses a stepped timing function (chunky rather
+   than silky) plus a film-grain overlay for a "grainy wipe" feel,
+   reusing the same turbulence noise used on the project images. ── */
+
+.contact-nudge-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.contact-nudge {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-left: 0.5rem;
+  transform: translateY(-50%);
+  font-weight: 900;
+  font-size: 4.25rem;
+  line-height: 1;
+  color: #000;
+  white-space: nowrap;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: opacity 0.45s steps(8, end), clip-path 0.45s steps(8, end);
+  pointer-events: none;
+}
+
+/* An exact duplicate of the arrow glyph, masked to its own letterform via
+   background-clip so the grain texture only ever paints the arrow's ink —
+   never the transparent box around it — then screened on top so it shows
+   up as light static instead of vanishing into the solid black fill. */
+.contact-nudge::after {
+  content: "\2190";
+  position: absolute;
+  inset: 0;
+  font: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.45s steps(8, end);
+  pointer-events: none;
+}
+
+.contact-nudge.is-visible {
+  opacity: 1;
+  clip-path: inset(0 0% 0 0);
+}
+
+.contact-nudge.is-visible::after {
+  opacity: 0.6;
+}
+
+.contact-nudge.is-visible::after {
+  opacity: 0.45;
+}
+
+header nav a.active {
+  text-decoration: underline;
+}
+
+.page {
+  padding: 1rem 1.5rem;
+  font-size: 0.875rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+.grid-item {
+  overflow: hidden;
+  align-self: end;
+  position: relative;
+  will-change: transform;
+}
+
+.grid-blank {
+  align-self: end;
+  aspect-ratio: var(--ratio-1x1);
+}
+
+.grid-item[data-ratio="1x1"]  { aspect-ratio: var(--ratio-1x1); }
+.grid-item[data-ratio="5x4"]  { aspect-ratio: var(--ratio-5x4); }
+.grid-item[data-ratio="16x9"] { aspect-ratio: var(--ratio-16x9); }
+.grid-item[data-ratio="9x16"] { aspect-ratio: var(--ratio-9x16); }
+.grid-item[data-ratio="21x9"] { aspect-ratio: var(--ratio-21x9); }
+
+/* Below Full HD the intentional row layout (quarter/half/three-quarter spans
+   set inline by script.js) gives way to a plain, evenly-sized column grid. */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .grid-item,
+  .grid-blank {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-item img,
+.grid-item iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+.grid-item img {
+  object-fit: cover;
+}
+
+.grid-item iframe {
+  pointer-events: none; /* prevents iframe from swallowing mouse events and glitching the tilt */
+}
+
+.label {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 0.875rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-family: monospace;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  z-index: 2;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.label-cursor {
+  display: none;
+}
+
+.label.active .label-cursor {
+  display: inline;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.works-footnote {
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+}

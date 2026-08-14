@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content *)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\aaron\\\\Documents\\\\_Portfolio 2026\\\\5_Website 3\\\\images\" -Recurse | Where-Object { $_.Name -match '^\\\\d' } | Select-Object FullName)",
+      "Bash(python -m http.server 8811)",
+      "Bash(powershell -NoProfile -Command 'Get-NetTCPConnection -LocalPort 8811 -State Listen | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }')",
+      "Bash(powershell -NoProfile -Command 'Get-NetTCPConnection -LocalPort 8811 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }')",
+      "Bash(node --check project.js)",
+      "WebFetch(domain:vimeo.com)",
+      "WebFetch(domain:player.vimeo.com)",
+      "Bash(python 'C:\\\\Users\\\\aaron\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aaron-Documents--Portfolio-2026-5-Website-3\\\\016b07db-7135-4d89-b198-1cd169e5ad1e\\\\scratchpad/move_film.py' 'C:\\\\Users\\\\aaron\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-aaron-Documents--Portfolio-2026-5-Website-3\\\\016b07db-7135-4d89-b198-1cd169e5ad1e\\\\scratchpad/eastpak_test.html')",
+      "Bash(python *)",
+      "Bash(git mv *)",
+      "Bash(mv index.html works.html)"
+    ]
+  }
+}

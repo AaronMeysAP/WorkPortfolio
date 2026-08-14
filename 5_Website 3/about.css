@@ -1,0 +1,274 @@
+/* ── About page — sleek minimalist layout ─────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Caveat:wght@700&display=swap');
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.about-page {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 8vw, 6rem) 1.5rem clamp(4rem, 10vw, 7rem);
+}
+
+/* ── Hero: eyebrow label + big outlined heading + description ── */
+
+.about-hero {
+  max-width: 32rem;
+  margin: 0 auto clamp(3rem, 8vw, 5rem);
+  text-align: center;
+}
+
+.about-eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: #999;
+  margin-bottom: 1rem;
+}
+
+.about-heading {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(3rem, 11vw, 6rem);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #000;
+  margin: 0 0 1.75rem;
+}
+
+
+.about-heading .letters {
+  display: inline-flex;
+}
+
+.about-heading .letter {
+  position: relative;
+  display: inline-block;
+}
+
+.about-heading .glyph {
+  display: inline-block;
+}
+
+.about-heading .glyph-alt {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 1.2em;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.about-heading .letter.is-alt .glyph-base {
+  opacity: 0;
+}
+
+.about-heading .letter.is-alt .glyph-alt {
+  opacity: 1;
+}
+
+.about-desc {
+  font-size: 0.85rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  color: #55534c;
+}
+
+.about-desc .desc-highlight {
+  display: inline-block;
+  font-weight: 700;
+  transform: skewX(-10deg);
+}
+
+/* ── Photo trio ───────────────────────────────────────────────
+   Equal-width flex items at rest. Hovering one drives its flex-grow
+   up, so it swells in place while its neighbors compress to make
+   room — a snappy accordion effect rather than a static grid. ── */
+
+.about-gallery {
+  display: flex;
+  gap: 0.75rem;
+  height: clamp(14rem, 32vw, 24rem);
+}
+
+.about-photo {
+  flex: 1 1 0%;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  /* Sharp in, sharp out — a fast snap rather than a soft ease. */
+  transition: flex-grow 0.25s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* The left and middle photos crop from the top down instead of the
+   center, so their top edge stays visible as their box resizes
+   (hover, mobile). */
+.about-gallery .about-photo:first-child img,
+.about-gallery .about-photo:nth-child(2) img {
+  object-position: center top;
+}
+
+/* Gated on real hover support so touch devices (no pointer to "hover")
+   get the plain, evenly-sized gallery instead of a stuck expanded state. */
+@media (hover: hover) and (pointer: fine) {
+  .about-photo:hover {
+    flex-grow: 2;
+  }
+
+  .about-gallery:hover .about-photo:not(:hover) {
+    flex-grow: 0.8;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-gallery {
+    flex-direction: column;
+    height: auto;
+    gap: 0.75rem;
+  }
+
+  .about-photo {
+    flex: none;
+    width: 100%;
+    height: 14rem;
+  }
+}
+
+/* ── Outro — a small closing note beneath the photos ─────────── */
+
+.about-outro {
+  max-width: 30rem;
+  margin: clamp(3rem, 8vw, 5rem) auto 0;
+  text-align: center;
+}
+
+.about-outro-preamble {
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  color: #000;
+  margin-bottom: 0.75rem;
+}
+
+.about-outro-text {
+  font-size: 0.78rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  color: #000;
+}
+
+.about-outro-text + .about-outro-text {
+  margin-top: 1.5rem;
+}
+
+.about-outro-lead {
+  display: block;
+  font-size: 3em;
+  line-height: 1.1;
+  margin-top: 0.15em;
+  margin-bottom: 0.3em;
+}
+
+.about-outro-line {
+  display: block;
+}
+
+/* ── CTA — a deliberately oversized, shiny button ─────────────
+   Capped at the same width as the photo trio above it (never wider
+   than the three images combined) and comfortably shorter than
+   their height, so it reads as "comically big" without actually
+   outsizing the gallery it sits under. ── */
+
+.about-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(3rem, 8vw, 5rem);
+}
+
+.about-cta-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 60rem;
+  height: clamp(6rem, 16vw, 9rem);
+  overflow: hidden;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4.2vw, 2.6rem);
+  text-align: center;
+  padding: 0 2.5rem;
+  transition: transform 0.2s ease;
+}
+
+.about-cta-button:hover {
+  transform: scale(1.015);
+}
+
+/* Diagonal light streak that plays exactly one pass, triggered by JS
+   on mouseenter (see about.js) — driving it off a `.is-shining` class
+   instead of the raw :hover pseudo means it always finishes its run
+   even on a quick pass-by, and `forwards` holds the end state instead
+   of snapping back mid-sweep. */
+.about-cta-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 47%,
+    rgba(255, 255, 255, 0.4) 53%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  background-position: 180% 0;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.about-cta-button.is-shining::after {
+  animation: about-cta-shine 0.9s ease-in-out 1 forwards;
+}
+
+@keyframes about-cta-shine {
+  0% { background-position: 180% 0; }
+  100% { background-position: -80% 0; }
+}
+
+@media (max-width: 640px) {
+  .about-cta-button {
+    font-size: 1.2rem;
+    padding: 0 1.5rem;
+  }
+}

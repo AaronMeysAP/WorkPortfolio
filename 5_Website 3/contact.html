@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/general/favicon.ico" />
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="works.html">work</a>
+      <a href="#" class="random-link">random</a>
+      <a href="about.html">about</a>
+      <a href="contact.html" class="active">contact</a>
+    </nav>
+  </header>
+
+  <main class="contact-split">
+
+    <div class="contact-content">
+
+      <section class="contact-hero">
+        <span class="contact-eyebrow">Get in touch</span>
+        <h1 class="contact-heading">Let&rsquo;s talk</h1>
+      </section>
+
+      <section class="contact-links" aria-label="Contact details">
+        <a class="contact-row" href="mailto:aaron.meys9@gmail.com">
+          <span class="contact-row-label">Email</span>
+          <span class="contact-row-value">aaron.meys9@gmail.com</span>
+        </a>
+        <a class="contact-row" href="https://www.linkedin.com/in/aaron-meys-864301369" target="_blank" rel="noopener">
+          <span class="contact-row-label">LinkedIn</span>
+          <span class="contact-row-value">Aaron Meys</span>
+        </a>
+        <a class="contact-row" href="tel:+32496232212">
+          <span class="contact-row-label">Phone</span>
+          <span class="contact-row-value">+32 496 23 22 12</span>
+        </a>
+      </section>
+
+      <section class="contact-form-section">
+        <div class="mail-trigger-wrap">
+          <button type="button" class="mail-trigger" id="mailTrigger" aria-expanded="false" aria-controls="contactFormPanel">
+            <span class="mail-trigger-circle">
+              <span class="mail-icon">
+                <svg class="mail-icon-glyph mail-icon-base" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2.5" y="5" width="19" height="14" rx="1.5" />
+                  <path d="M3 6.5l9 6.5 9-6.5" />
+                </svg>
+                <svg class="mail-icon-glyph mail-icon-alt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 5l14 14M19 5L5 19" />
+                </svg>
+              </span>
+            </span>
+            <span class="mail-trigger-text">Send a quick message</span>
+          </button>
+        </div>
+
+        <div class="contact-form-panel" id="contactFormPanel">
+          <div class="contact-form-panel-inner">
+            <form class="contact-form" id="contactForm">
+              <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" />
+              <input type="hidden" name="_subject" value="New message from portfolio site" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+
+              <div class="contact-fields">
+                <label class="contact-field">
+                  <span>Name</span>
+                  <input type="text" name="name" required autocomplete="name" />
+                </label>
+
+                <label class="contact-field">
+                  <span>Your email</span>
+                  <input type="email" name="email" required autocomplete="email" />
+                </label>
+
+                <label class="contact-field">
+                  <span>Message</span>
+                  <textarea name="message" rows="4" required></textarea>
+                </label>
+              </div>
+
+              <button type="submit" class="contact-submit">Send</button>
+
+              <p class="contact-form-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <figure class="contact-photo">
+      <img class="contact-photo-img contact-photo-img-desktop" src="images/contact/contact 01.png" alt="" />
+      <img class="contact-photo-img contact-photo-img-mobile" src="images/Illustration work/foto contact.png" alt="" />
+    </figure>
+
+  </main>
+
+  <script src="random-nav.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>
