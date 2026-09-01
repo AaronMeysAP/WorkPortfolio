@@ -1,7 +1,3 @@
-/* ── Project page — dark panel layout ─────────────────────── */
-/* Shared by any project page (e.g. adult-swim.html). Copy the   */
-/* HTML file for a new project and keep linking this same file. */
-
 body {
   background: #000000;
 }
@@ -19,16 +15,12 @@ header nav a:hover {
   color: rgba(255, 255, 255, 0.93);
 }
 
-/* ── Page wrapper ─────────────────────────────────────────── */
-
 .proj-page {
   display: flex;
   flex-direction: column;
   gap: 5px;
   padding: 5px;
 }
-
-/* ── Rows ─────────────────────────────────────────────────── */
 
 .proj-row {
   display: flex;
@@ -39,14 +31,10 @@ header nav a:hover {
 .proj-row--tall { height: 84vh; }
 .proj-row--mid  { height: 84vh; }
 
-/* ── Generic panel ────────────────────────────────────────── */
-
 .proj-panel {
   overflow: hidden;
   flex-shrink: 0;
 }
-
-/* ── Cream info card ──────────────────────────────────────── */
 
 .proj-info {
   flex: 0 0 28%;
@@ -83,8 +71,6 @@ header nav a:hover {
   font-weight: 600;
 }
 
-/* ── Plain info card — matches the page background instead of the cream card ── */
-
 .proj-info--plain {
   background: #000000;
   flex: 1 1 0;
@@ -120,8 +106,6 @@ header nav a:hover {
   color: #777;
   line-height: 1.7;
 }
-
-/* ── Image panels ─────────────────────────────────────────── */
 
 .proj-img {
   flex: 1;
@@ -161,9 +145,6 @@ header nav a:hover {
   transform: none;
 }
 
-/* A text panel sized like a .proj-img, so it can stand in for a photo
-   in an otherwise photo-only row (e.g. graphic-design.html) without
-   breaking the row's flex sizing. */
 .proj-text {
   flex: 1;
   display: flex;
@@ -178,8 +159,6 @@ header nav a:hover {
   text-align: center;
   max-width: 26rem;
 }
-
-/* ── Captioned photo (image + one-line caption below) ────────── */
 
 .proj-photo {
   flex: 1;
@@ -202,15 +181,10 @@ header nav a:hover {
   color: rgba(255, 255, 255, 0.55);
 }
 
-/* Slightly narrower than the image above it, so longer captions
-   (e.g. graphic-design.html) don't run flush to the same edges as
-   the zoomed-in artwork. */
 .proj-photo-cap--inset {
   width: 92%;
   margin: 0 auto;
 }
-
-/* ── Film section ─────────────────────────────────────────── */
 
 .proj-film {
   background: #000000;
@@ -220,11 +194,6 @@ header nav a:hover {
   gap: 1.1rem;
 }
 
-/* Reset any row-scoped width/margin constraints (see eastpak.html's vertical
-   video column) so a film block fills the screen properly once fullscreen.
-   The head label is hidden and the player is stretched edge-to-edge so it
-   behaves like a real fullscreen player instead of a maximized panel with
-   the title bar and controls still eating into the video area. */
 .proj-film:fullscreen {
   position: relative;
   flex: initial;
@@ -270,8 +239,6 @@ header nav a:hover {
   color: rgba(255, 255, 255, 0.28);
 }
 
-/* ── Player ───────────────────────────────────────────────── */
-
 .proj-player-ratio {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -281,10 +248,6 @@ header nav a:hover {
   background: #000;
   overflow: hidden;
 }
-
-/* ── Film block sitting beside a text panel in a row (e.g. eastpak.html) ── */
-/* Instead of centering at 65% of a full-width section, it fills the row's
-   height and lets the video's real aspect ratio drive its (narrower) width. */
 
 .proj-row .proj-film {
   flex: 0 0 26.4vw;
@@ -299,10 +262,6 @@ header nav a:hover {
   height: auto;
 }
 
-/* The row-scoped rules above still match while fullscreen (the Fullscreen
-   API doesn't remove the element from the DOM), and being equally specific
-   but later in the cascade they'd otherwise win and shrink the video back
-   down to its inset size. Force the true fullscreen sizing back on top. */
 .proj-row .proj-film:fullscreen {
   flex: initial;
   width: 100%;
@@ -351,8 +310,6 @@ header nav a:hover {
   opacity: 0;
   pointer-events: none;
 }
-
-/* ── Controls bar ─────────────────────────────────────────── */
 
 .proj-controls {
   display: flex;
@@ -426,8 +383,6 @@ header nav a:hover {
   flex-shrink: 0;
 }
 
-/* ── Volume control ───────────────────────────────────────── */
-
 .proj-vol {
   display: flex;
   align-items: center;
@@ -499,8 +454,6 @@ header nav a:hover {
   display: none;
 }
 
-/* ── Mobile — one image per row instead of three side by side ── */
-
 @media (max-width: 640px) {
   .proj-row {
     flex-direction: column;
@@ -532,8 +485,6 @@ header nav a:hover {
     margin-right: 0;
   }
 }
-
-/* ── Bottom back link ─────────────────────────────────────── */
 
 .proj-back-text {
   display: block;

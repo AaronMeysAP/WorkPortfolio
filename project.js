@@ -1,10 +1,3 @@
-// Shared by any project page (e.g. adult-swim.html). Copy the HTML file
-// for a new project and keep linking this same file. To swap a video, set
-// data-vimeo-id="XXXXXXX" (needs the Vimeo player script tag) or
-// data-youtube-id="XXXXXXXXXXX" (needs no extra script tag — the YouTube
-// IFrame API is loaded on demand) on that film's iframe.
-// Each .proj-film block on the page is wired up independently, so a page
-// can host more than one video (see eastpak.html).
 (function () {
   document.querySelectorAll('.proj-img:not(.proj-img--static)').forEach(initImgHover);
 
@@ -25,9 +18,6 @@
       return x >= x0 && x <= x0 + w && y >= y0 && y <= y0 + h;
     }
 
-    // The grown image (scale(1.1)) physically extends past the div on all
-    // sides, clipped by overflow:hidden. "Leaving the big photo" means
-    // leaving that true, larger box — not the div's own edges.
     function inGrownBounds(x, y, rect) {
       const marginX = rect.width * (GROWN_SCALE - 1) / 2;
       const marginY = rect.height * (GROWN_SCALE - 1) / 2;
@@ -58,7 +48,6 @@
       document.removeEventListener('mouseout', handleDocOut);
     }
 
-    // Only reachable while inactive: gates growth to the small photo itself.
     function handlePanelMove(e) {
       if (active) return;
       const rect = panel.getBoundingClientRect();
@@ -69,8 +58,6 @@
       setOffset(x, y, rect);
     }
 
-    // Runs while active: tracks the mouse anywhere, including outside the
-    // panel, until it exits the grown image's true bounds.
     function handleDocMove(e) {
       const rect = panel.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -92,11 +79,6 @@
 })();
 
 (function () {
-  // Each film block picks its backend off the iframe's data attribute:
-  // data-vimeo-id="XXXXXXX" or data-youtube-id="XXXXXXXXXXX". Whichever is
-  // present drives an adapter exposing a common play/pause/volume/seek/
-  // fullscreen interface, so wireControls (and the markup/CSS it drives)
-  // never has to know which video service is behind it.
   function initFilm(film) {
     const iframe = film.querySelector('iframe[data-vimeo-id], iframe[data-youtube-id]');
     if (!iframe) return;
@@ -116,10 +98,6 @@
     wireControls(film, playerWrap, adapter);
   }
 
-  // Fullscreen is requested on the whole `.proj-film` block (video + our
-  // custom controls bar) rather than the bare iframe, so the controls —
-  // including the exit-fullscreen button — stay in the fullscreen element
-  // instead of disappearing behind it.
   function requestFS(el) {
     const fn = el.requestFullscreen || el.webkitRequestFullscreen ||
                el.mozRequestFullScreen || el.msRequestFullscreen;
@@ -234,8 +212,6 @@
           this.whenReady(() => resolve(player.getDuration() || 0));
         });
       },
-      // No public API for a YouTube video's native pixel size, so this page's
-      // aspect-ratio comes entirely from CSS (see .proj-player-ratio).
       getVideoSize: null,
       play:  () => runOrQueue(() => player.playVideo()),
       pause: () => runOrQueue(() => player.pauseVideo()),
@@ -250,9 +226,6 @@
     };
   }
 
-  // Everything below is provider-agnostic: it only talks to `adapter`, so
-  // the controls' markup/behaviour is identical no matter which video
-  // service is embedded.
   function wireControls(film, playerWrap, adapter) {
     const controls     = film.querySelector('.proj-controls');
     const overlayPlay  = film.querySelector('.proj-overlay-play');
@@ -284,9 +257,6 @@
       else       showControls();
     }
 
-    // Controls fade out after a few seconds of mouse inactivity during
-    // playback (in fullscreen too, since `film` — and these listeners —
-    // stay in the fullscreen element). Paused video always keeps them up.
     let idleTimer = null;
 
     function showControls() {

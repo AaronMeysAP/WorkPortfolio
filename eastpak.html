@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="images/general/favicon.ico" />
   <title>Eastpak — Resistr Case</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
   <style>
-    /* Forces the second (bottom-row) player to stay portrait regardless of
-       the source clip's real dimensions. */
     .proj-player-ratio--vertical { aspect-ratio: 9 / 16 !important; }
   </style>
 </head>
@@ -27,7 +28,6 @@
 
   <main class="proj-page">
 
-    <!-- ROW 1 — info card + hero image -->
     <div class="proj-row proj-row--tall">
 
       <div class="proj-panel proj-info">
@@ -55,7 +55,6 @@
 
     </div>
 
-    <!-- ROW 2 — film -->
     <div class="proj-film">
 
       <div class="proj-film-head">
@@ -113,37 +112,34 @@
 
     </div>
 
-    <!-- ROW 3 — photos -->
     <div class="proj-row proj-row--mid">
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/02.png" alt="Eastpak" />
+        <img src="images/Eastpak - Resistr Case/02.png" alt="Eastpak" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/03.png" alt="Eastpak" />
+        <img src="images/Eastpak - Resistr Case/03.png" alt="Eastpak" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/04.png" alt="Eastpak" />
+        <img src="images/Eastpak - Resistr Case/04.png" alt="Eastpak" loading="lazy" decoding="async" />
       </div>
 
     </div>
 
-    <!-- ROW 4 — photos -->
     <div class="proj-row proj-row--mid">
 
       <div class="proj-panel proj-img proj-img--wide">
-        <img src="images/Eastpak - Resistr Case/06.png" alt="Eastpak" />
+        <img src="images/Eastpak - Resistr Case/06.png" alt="Eastpak" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/05.png" alt="Eastpak" />
+        <img src="images/Eastpak - Resistr Case/05.png" alt="Eastpak" loading="lazy" decoding="async" />
       </div>
 
     </div>
 
-    <!-- ROW 5 — description + vertical video -->
     <div class="proj-row">
 
       <div class="proj-panel proj-info proj-info--plain">
@@ -215,10 +211,10 @@
 
   </main>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
-  <script src="project.js"></script>
-  <script src="random-nav.js"></script>
-  <script src="contact-nudge.js"></script>
+  <script src="https://player.vimeo.com/api/player.js" defer></script>
+  <script src="project.js" defer></script>
+  <script src="random-nav.js" defer></script>
+  <script src="contact-nudge.js" defer></script>
 
 </body>
 </html>

@@ -1,5 +1,3 @@
-// Makes the "random" nav link jump to a random project page.
-// Add a new page's filename here when it's added.
 (function () {
   const PAGES = [
     'adult-swim.html',
@@ -13,6 +11,7 @@
     'snc.html',
     'illustration-work.html',
     'graphic-design.html',
+    'nikon-camera.html',
   ];
 
   const VISITED_KEY = 'randomVisited';
@@ -33,8 +32,6 @@
     const current = location.pathname.split('/').pop();
     let visited = getVisited();
 
-    // Every page (besides the current one) has already come up this cycle —
-    // start a fresh cycle.
     let choices = PAGES.filter((p) => p !== current && !visited.includes(p));
     if (choices.length === 0) {
       visited = [];

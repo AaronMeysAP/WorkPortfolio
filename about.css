@@ -1,7 +1,3 @@
-/* ── About page — sleek minimalist layout ─────────────────── */
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Caveat:wght@700&display=swap');
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -19,8 +15,6 @@
   margin: 0 auto;
   padding: clamp(3rem, 8vw, 6rem) 1.5rem clamp(4rem, 10vw, 7rem);
 }
-
-/* ── Hero: eyebrow label + big outlined heading + description ── */
 
 .about-hero {
   max-width: 32rem;
@@ -95,11 +89,6 @@
   transform: skewX(-10deg);
 }
 
-/* ── Photo trio ───────────────────────────────────────────────
-   Equal-width flex items at rest. Hovering one drives its flex-grow
-   up, so it swells in place while its neighbors compress to make
-   room — a snappy accordion effect rather than a static grid. ── */
-
 .about-gallery {
   display: flex;
   gap: 0.75rem;
@@ -111,7 +100,6 @@
   min-width: 0;
   margin: 0;
   overflow: hidden;
-  /* Sharp in, sharp out — a fast snap rather than a soft ease. */
   transition: flex-grow 0.25s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
@@ -123,16 +111,11 @@
   display: block;
 }
 
-/* The left and middle photos crop from the top down instead of the
-   center, so their top edge stays visible as their box resizes
-   (hover, mobile). */
 .about-gallery .about-photo:first-child img,
 .about-gallery .about-photo:nth-child(2) img {
   object-position: center top;
 }
 
-/* Gated on real hover support so touch devices (no pointer to "hover")
-   get the plain, evenly-sized gallery instead of a stuck expanded state. */
 @media (hover: hover) and (pointer: fine) {
   .about-photo:hover {
     flex-grow: 2;
@@ -156,8 +139,6 @@
     height: 14rem;
   }
 }
-
-/* ── Outro — a small closing note beneath the photos ─────────── */
 
 .about-outro {
   max-width: 30rem;
@@ -197,12 +178,6 @@
   display: block;
 }
 
-/* ── CTA — a deliberately oversized, shiny button ─────────────
-   Capped at the same width as the photo trio above it (never wider
-   than the three images combined) and comfortably shorter than
-   their height, so it reads as "comically big" without actually
-   outsizing the gallery it sits under. ── */
-
 .about-cta {
   display: flex;
   justify-content: center;
@@ -235,11 +210,6 @@
   transform: scale(1.015);
 }
 
-/* Diagonal light streak that plays exactly one pass, triggered by JS
-   on mouseenter (see about.js) — driving it off a `.is-shining` class
-   instead of the raw :hover pseudo means it always finishes its run
-   even on a quick pass-by, and `forwards` holds the end state instead
-   of snapping back mid-sweep. */
 .about-cta-button::after {
   content: "";
   position: absolute;

@@ -1,6 +1,3 @@
-// Periodically flashes a small arrow pointing at the "contact" nav link,
-// as a gentle nudge. This script isn't included on contact.html, so the
-// arrow never appears on the page it points to.
 (function () {
   const nudge = document.querySelector('.contact-nudge');
   if (!nudge) return;

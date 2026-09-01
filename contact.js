@@ -1,6 +1,3 @@
-// Toggles the inline contact-form panel open/closed from the mail icon
-// button. The icon itself is two stacked SVGs crossfaded via opacity
-// (see contact.css), so no layout shift ever happens on toggle.
 (function () {
   const trigger = document.getElementById('mailTrigger');
   const panel = document.getElementById('contactFormPanel');
@@ -16,17 +13,10 @@
 
     if (isOpen) {
       const firstField = panel.querySelector('input[name="name"]');
-      // Wait out the slide-open transition so focus doesn't yank the
-      // page around mid-animation.
       if (firstField) setTimeout(() => firstField.focus(), 300);
     }
   }
 
-  // Triggering the slide-open transition before the page had fully
-  // loaded made it glitch intermittently (the panel's height was still
-  // settling as late-loading fonts/layout shifted it mid-animation). A
-  // click before load doesn't get dropped — it just fires once loading
-  // finishes instead of animating against a still-moving layout.
   let ready = document.readyState === 'complete';
   let pendingClick = false;
 
@@ -53,9 +43,6 @@
   });
 })();
 
-// Submits the contact form to FormSubmit over AJAX so sending never
-// navigates away from the page — the status line below the button
-// reports progress instead.
 (function () {
   const form = document.getElementById('contactForm');
   if (!form) return;
