@@ -16,18 +16,9 @@ function loadYouTubeThumb(el) {
   el.appendChild(iframe);
 }
 
-const thumbObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    if (el.dataset.vimeoId) loadVimeoThumb(el);
-    else if (el.dataset.youtubeId) loadYouTubeThumb(el);
-    observer.unobserve(el);
-  });
-}, { rootMargin: '200px' });
-
 document.querySelectorAll('[data-vimeo-id], [data-youtube-id]').forEach(el => {
-  thumbObserver.observe(el);
+  if (el.dataset.vimeoId) loadVimeoThumb(el);
+  else if (el.dataset.youtubeId) loadYouTubeThumb(el);
 });
 
 const TILT = {
@@ -71,8 +62,8 @@ document.querySelectorAll('.grid-item').forEach(card => {
 
     card.style.transform = [
       `perspective(${TILT.perspective}px)`,
-      `rotateX(${-y * TILT.maxRotate * 2 * scale}deg)`,
-      `rotateY(${ x * TILT.maxRotate * 2 * scale}deg)`,
+      `rotateX(${ y * TILT.maxRotate * 2 * scale}deg)`,
+      `rotateY(${-x * TILT.maxRotate * 2 * scale}deg)`,
       `translateY(-${TILT.lift * scale}px)`,
       `scale(${TILT.hoverScale})`,
     ].join(' ');
@@ -96,15 +87,18 @@ document.querySelectorAll('.grid-item').forEach(card => {
   if (!name) return;
 
   const label    = document.createElement('div');
+  const box      = document.createElement('span');
   const textSpan = document.createElement('span');
   const cursor   = document.createElement('span');
 
   label.className    = 'label';
+  box.className      = 'label-box';
   cursor.className   = 'label-cursor';
   cursor.textContent = '|';
 
-  label.appendChild(textSpan);
-  label.appendChild(cursor);
+  box.appendChild(textSpan);
+  box.appendChild(cursor);
+  label.appendChild(box);
   card.appendChild(label);
 
   let timer = null;
@@ -116,6 +110,7 @@ document.querySelectorAll('.grid-item').forEach(card => {
     timer = setInterval(() => {
       if (pos < name.length) {
         textSpan.textContent = name.slice(0, ++pos);
+        box.classList.toggle('has-text', pos > 0);
       } else {
         clearInterval(timer);
       }
@@ -127,6 +122,7 @@ document.querySelectorAll('.grid-item').forEach(card => {
     timer = setInterval(() => {
       if (pos > 0) {
         textSpan.textContent = name.slice(0, --pos);
+        box.classList.toggle('has-text', pos > 0);
       } else {
         clearInterval(timer);
         label.classList.remove('active');

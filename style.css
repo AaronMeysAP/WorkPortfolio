@@ -1,5 +1,5 @@
 :root {
-  --gap: 1.5rem;
+  --gap: 2rem;
   --columns: 12;
   --header-height: 3rem;
 
@@ -22,7 +22,7 @@ html {
 
 body {
   background: #ffffff;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
   font-weight: 300;
   overflow-x: hidden;
 }
@@ -178,17 +178,36 @@ header nav a.active {
   position: absolute;
   bottom: 0.875rem;
   left: 0.875rem;
-  color: #fff;
+  max-width: calc(100% - 1.75rem);
+  color: #000;
   font-size: 0.75rem;
-  font-family: monospace;
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
   letter-spacing: 0.06em;
   pointer-events: none;
   z-index: 2;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.label-box {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+
+.label-box.has-text {
+  background: #fff;
+  padding: 0.35rem 0.6rem;
 }
 
 .label-cursor {
   display: none;
+}
+
+.label-box:not(.has-text) .label-cursor {
+  display: none !important;
 }
 
 .label.active .label-cursor {

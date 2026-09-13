@@ -34,6 +34,20 @@
   object-position: center top;
 }
 
+.contact-photo-img-desktop {
+  top: auto;
+  left: 50%;
+  right: auto;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: auto;
+  height: auto;
+  max-width: min(85%, 28rem);
+  max-height: 65%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
 .contact-photo-img-mobile {
   display: none;
 }
