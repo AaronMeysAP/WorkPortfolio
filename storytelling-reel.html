@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="images/general/favicon.ico" />
+  <title>Storytelling Reel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="project.css" />
+  <style>
+    .proj-player-ratio--vertical { aspect-ratio: 9 / 16 !important; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="works.html" class="active">work</a>
+      <a href="#" class="random-link">random</a>
+      <a href="about.html">about</a>
+      <span class="contact-nudge-wrap"><span class="contact-nudge" aria-hidden="true">&larr;</span><a href="contact.html">contact</a></span>
+    </nav>
+    <a href="works.html" class="back-link">back →</a>
+  </header>
+
+  <main class="proj-page">
+
+    <div class="proj-row proj-row--tall">
+
+      <div class="proj-panel proj-info">
+        <div class="proj-panel-top">
+          <span>Storytelling Reel<br> [ personal project ]</span>
+          <span>—</span>
+        </div>
+        <div class="proj-spacer">
+          <p class="proj-desc">A short video, meant for social media.  <br> Concepted, shot, and edited in about 8 - 9 hours.</p>
+        </div>
+        <div class="proj-panel-bot">
+          <div class="proj-hr"></div>
+          <div class="proj-panel-foot">
+            <span>Videography<br>3d tracking</span>
+            <span>—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-panel proj-img">
+        <img src="images/Storytelling Reel/Aaron working at his pc.webp" alt="Aaron sitting at his desk, hand in his hair, staring at his laptop" />
+      </div>
+
+    </div>
+
+    <div class="proj-row">
+
+      <div class="proj-panel proj-info proj-info--plain">
+        <div class="proj-spacer">
+          <p class="proj-desc">The 30-sec reel >> <br> Meant as an test project for the low light <br>capabilities of the Sony fx3.</p>
+        </div>
+      </div>
+
+      <div class="proj-panel proj-film">
+
+        <div class="proj-film-head">
+          <span>Storytelling Reel Video</span>
+          <span>—</span>
+        </div>
+
+        <div class="proj-player-ratio proj-player-ratio--vertical">
+          <video
+            class="proj-native-video"
+            preload="metadata"
+            playsinline
+            poster="images/Storytelling Reel/storytelling-reel-poster.webp">
+            <source src="images/Storytelling Reel/storytelling-reel.webm" type="video/webm" />
+            <source src="images/Storytelling Reel/storytelling-reel.mp4" type="video/mp4" />
+          </video>
+          <button class="proj-overlay-play" id="overlayPlay" aria-label="Play">
+            <svg viewBox="0 0 48 48" fill="none">
+              <polygon points="16,8 40,24 16,40" fill="white"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="proj-controls">
+          <button class="proj-ctrl" id="playPauseBtn" aria-label="Play / Pause">
+            <svg class="i-play"  viewBox="0 0 16 16" fill="currentColor"><polygon points="3,1 14,8 3,15"/></svg>
+            <svg class="i-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="2" y="1" width="4.5" height="14"/><rect x="9.5" y="1" width="4.5" height="14"/></svg>
+          </button>
+          <div class="proj-prog" id="prog">
+            <div class="proj-prog-fill" id="progFill"></div>
+          </div>
+          <time class="proj-time" id="timeDsp">0:00 / 0:00</time>
+          <div class="proj-vol">
+            <button class="proj-ctrl" id="muteBtn" aria-label="Mute">
+              <svg class="i-vol" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 2.5L4.5 6H2v4h2.5L8 13.5V2.5z"/>
+                <path d="M10.5 5.5q1.5 1.5 1.5 2.5t-1.5 2.5" stroke="currentColor" stroke-width="1.1" fill="none"/>
+                <path d="M12.8 3.2Q15.5 6 15.5 8t-2.7 4.8" stroke="currentColor" stroke-width="1.1" fill="none"/>
+              </svg>
+              <svg class="i-mute" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 2.5L4.5 6H2v4h2.5L8 13.5V2.5z"/>
+                <line x1="10.5" y1="5.5" x2="15.5" y2="10.5" stroke="currentColor" stroke-width="1.3"/>
+                <line x1="15.5" y1="5.5" x2="10.5" y2="10.5" stroke="currentColor" stroke-width="1.3"/>
+              </svg>
+            </button>
+            <div class="proj-vol-slider">
+              <input type="range" id="volRange" min="0" max="100" value="100" step="1" aria-label="Volume" />
+            </div>
+          </div>
+          <button class="proj-ctrl" id="fsBtn" aria-label="Fullscreen">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+              <path d="M1 5V1h4M11 1h4v4M15 11v4h-4M5 15H1v-4"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="proj-row proj-row--mid">
+
+      <div class="proj-panel proj-img proj-img--wide">
+        <img src="images/Storytelling Reel/example of 3d tracking.webp" alt="Storytelling Reel 3D tracking" loading="lazy" decoding="async" />
+      </div>
+
+      <div class="proj-panel proj-img">
+        <img src="images/Storytelling Reel/Liquid glass asset.webp" alt="Storytelling Reel liquid glass asset" loading="lazy" decoding="async" />
+      </div>
+
+    </div>
+
+    <a class="proj-back-text" href="works.html">alrighty, take me back!</a>
+
+  </main>
+
+  <script src="project.js" defer></script>
+  <script src="random-nav.js" defer></script>
+  <script src="contact-nudge.js" defer></script>
+
+</body>
+</html>

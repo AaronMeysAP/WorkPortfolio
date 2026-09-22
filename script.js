@@ -16,10 +16,38 @@ function loadYouTubeThumb(el) {
   el.appendChild(iframe);
 }
 
-document.querySelectorAll('[data-vimeo-id], [data-youtube-id]').forEach(el => {
-  if (el.dataset.vimeoId) loadVimeoThumb(el);
-  else if (el.dataset.youtubeId) loadYouTubeThumb(el);
-});
+const lazyEmbeds = document.querySelectorAll('[data-vimeo-id], [data-youtube-id]');
+const lazyVideos = document.querySelectorAll('.grid-item video');
+
+if ('IntersectionObserver' in window) {
+  const embedObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      if (el.dataset.vimeoId) loadVimeoThumb(el);
+      else if (el.dataset.youtubeId) loadYouTubeThumb(el);
+      observer.unobserve(el);
+    });
+  }, { rootMargin: '400px 0px' });
+
+  lazyEmbeds.forEach(el => embedObserver.observe(el));
+
+  const videoObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    });
+  }, { rootMargin: '400px 0px' });
+
+  lazyVideos.forEach(video => videoObserver.observe(video));
+} else {
+  lazyEmbeds.forEach(el => {
+    if (el.dataset.vimeoId) loadVimeoThumb(el);
+    else if (el.dataset.youtubeId) loadYouTubeThumb(el);
+  });
+  lazyVideos.forEach(video => video.play().catch(() => {}));
+}
 
 const TILT = {
   maxRotate:   8,

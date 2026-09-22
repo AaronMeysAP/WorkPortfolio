@@ -12,6 +12,7 @@
     'illustration-work.html',
     'graphic-design.html',
     'nikon-camera.html',
+    'storytelling-reel.html',
   ];
 
   const VISITED_KEY = 'randomVisited';

@@ -80,13 +80,17 @@
 
 (function () {
   function initFilm(film) {
+    const video  = film.querySelector('video.proj-native-video');
     const iframe = film.querySelector('iframe[data-vimeo-id], iframe[data-youtube-id]');
-    if (!iframe) return;
 
     const playerWrap = film.querySelector('.proj-player-ratio');
 
     let adapter;
-    if (iframe.dataset.youtubeId) {
+    if (video) {
+      adapter = createVideoAdapter(video, film);
+    } else if (!iframe) {
+      return;
+    } else if (iframe.dataset.youtubeId) {
       adapter = createYouTubeAdapter(iframe, film);
     } else if (iframe.dataset.vimeoId) {
       if (typeof Vimeo === 'undefined') return;
@@ -99,9 +103,38 @@
   }
 
   function requestFS(el) {
+    const fsEl = document.fullscreenElement || document.webkitFullscreenElement ||
+                 document.mozFullScreenElement || document.msFullscreenElement;
+    if (fsEl) {
+      const exitFn = document.exitFullscreen || document.webkitExitFullscreen ||
+                     document.mozCancelFullScreen || document.msExitFullscreen;
+      if (exitFn) exitFn.call(document);
+      return;
+    }
     const fn = el.requestFullscreen || el.webkitRequestFullscreen ||
                el.mozRequestFullScreen || el.msRequestFullscreen;
     if (fn) fn.call(el);
+  }
+
+  function createVideoAdapter(video, film) {
+    return {
+      whenReady(cb) {
+        if (video.readyState >= 1) cb();
+        else video.addEventListener('loadedmetadata', cb, { once: true });
+      },
+      getDuration: () => Promise.resolve(video.duration || 0),
+      getVideoSize: null,
+      play:  () => video.play(),
+      pause: () => video.pause(),
+      setMuted:      m    => { video.muted = m; },
+      setVolume:     frac => { video.volume = frac; },
+      setCurrentTime: s   => { video.currentTime = s; },
+      requestFullscreen() { requestFS(film); },
+      onPlay:       cb => video.addEventListener('play', cb),
+      onPause:      cb => video.addEventListener('pause', cb),
+      onEnded:      cb => video.addEventListener('ended', cb),
+      onTimeUpdate: cb => video.addEventListener('timeupdate', () => cb(video.currentTime)),
+    };
   }
 
   function createVimeoAdapter(iframe, film) {
@@ -280,7 +313,11 @@
     adapter.whenReady(() => adapter.getDuration().then(d => { dur = d; }));
 
     function syncControlsWidth() {
-      controls.style.width = playerWrap.getBoundingClientRect().width + 'px';
+      if (document.fullscreenElement === film) {
+        controls.style.width = '';
+      } else {
+        controls.style.width = playerWrap.getBoundingClientRect().width + 'px';
+      }
     }
 
     function matchVideoAspectRatio() {
@@ -299,6 +336,8 @@
     matchVideoAspectRatio();
     adapter.whenReady(matchVideoAspectRatio);
     window.addEventListener('resize', syncControlsWidth);
+    document.addEventListener('fullscreenchange', syncControlsWidth);
+    document.addEventListener('webkitfullscreenchange', syncControlsWidth);
 
     adapter.onPlay(()  => setPlaying(true));
     adapter.onPause(() => setPlaying(false));

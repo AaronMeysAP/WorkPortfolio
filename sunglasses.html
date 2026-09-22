@@ -61,13 +61,14 @@
       </div>
 
       <div class="proj-player-ratio">
-        <iframe
-          id="vimeo-frame"
-          data-vimeo-id="1216826843"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          frameborder="0">
-        </iframe>
+        <video
+          class="proj-native-video"
+          preload="metadata"
+          playsinline
+          poster="images/sunglasses/sunglasses-video-full-poster.webp">
+          <source src="images/sunglasses/sunglasses-video-full.webm" type="video/webm" />
+          <source src="images/sunglasses/sunglasses-video-full.mp4" type="video/mp4" />
+        </video>
         <button class="proj-overlay-play" id="overlayPlay" aria-label="Play">
           <svg viewBox="0 0 48 48" fill="none">
             <polygon points="16,8 40,24 16,40" fill="white"/>
@@ -130,7 +131,6 @@
 
   </main>
 
-  <script src="https://player.vimeo.com/api/player.js" defer></script>
   <script src="project.js" defer></script>
   <script src="random-nav.js" defer></script>
   <script src="contact-nudge.js" defer></script>

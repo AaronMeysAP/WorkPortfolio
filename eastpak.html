@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
   <style>
+    .proj-player-ratio { aspect-ratio: 1 / 1 !important; }
     .proj-player-ratio--vertical { aspect-ratio: 9 / 16 !important; }
   </style>
 </head>
@@ -50,7 +51,7 @@
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/01.webp" alt="Eastpak" />
+        <img src="images/Eastpak - Resistr Case/01.webp" alt="Two Eastpak Resist'r hard-shell suitcases standing side by side, lit from below" />
       </div>
 
     </div>
@@ -63,13 +64,14 @@
       </div>
 
       <div class="proj-player-ratio">
-        <iframe
-          id="vimeo-frame"
-          data-vimeo-id="1213609617"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          frameborder="0">
-        </iframe>
+        <video
+          class="proj-native-video"
+          preload="metadata"
+          playsinline
+          poster="images/Eastpak - Resistr Case/eastpak-video-1x1-full-poster.webp">
+          <source src="images/Eastpak - Resistr Case/eastpak-video-1x1-full.webm" type="video/webm" />
+          <source src="images/Eastpak - Resistr Case/eastpak-video-1x1-full.mp4" type="video/mp4" />
+        </video>
         <button class="proj-overlay-play" id="overlayPlay" aria-label="Play">
           <svg viewBox="0 0 48 48" fill="none">
             <polygon points="16,8 40,24 16,40" fill="white"/>
@@ -115,15 +117,15 @@
     <div class="proj-row proj-row--mid">
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/02.webp" alt="Eastpak" loading="lazy" decoding="async" />
+        <img src="images/Eastpak - Resistr Case/02.webp" alt="Close-up of the Resist'r case's corner, wheel, and logo badge" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/03.webp" alt="Eastpak" loading="lazy" decoding="async" />
+        <img src="images/Eastpak - Resistr Case/03.webp" alt="Extreme close-up of the Resist'r case's latch and hinge mechanism" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/04.webp" alt="Eastpak" loading="lazy" decoding="async" />
+        <img src="images/Eastpak - Resistr Case/04.webp" alt="The Resist'r case with its trolley handle extended, studio lit" loading="lazy" decoding="async" />
       </div>
 
     </div>
@@ -131,11 +133,11 @@
     <div class="proj-row proj-row--mid">
 
       <div class="proj-panel proj-img proj-img--wide">
-        <img src="images/Eastpak - Resistr Case/06.webp" alt="Eastpak" loading="lazy" decoding="async" />
+        <img src="images/Eastpak - Resistr Case/06.webp" alt="Silhouette of the Resist'r case backlit against black" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Eastpak - Resistr Case/05.webp" alt="Eastpak" loading="lazy" decoding="async" />
+        <img src="images/Eastpak - Resistr Case/05.webp" alt="3D simulation of the case shattering into reflective shards mid-impact" loading="lazy" decoding="async" />
       </div>
 
     </div>
@@ -156,13 +158,14 @@
         </div>
 
         <div class="proj-player-ratio proj-player-ratio--vertical">
-          <iframe
-            id="vimeo-frame-2"
-            data-vimeo-id="1217047042"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-            frameborder="0">
-          </iframe>
+          <video
+            class="proj-native-video"
+            preload="metadata"
+            playsinline
+            poster="images/Eastpak - Resistr Case/eastpak-video-9x16-full-poster.webp">
+            <source src="images/Eastpak - Resistr Case/eastpak-video-9x16-full.webm" type="video/webm" />
+            <source src="images/Eastpak - Resistr Case/eastpak-video-9x16-full.mp4" type="video/mp4" />
+          </video>
           <button class="proj-overlay-play" id="overlayPlay2" aria-label="Play">
             <svg viewBox="0 0 48 48" fill="none">
               <polygon points="16,8 40,24 16,40" fill="white"/>
@@ -211,7 +214,6 @@
 
   </main>
 
-  <script src="https://player.vimeo.com/api/player.js" defer></script>
   <script src="project.js" defer></script>
   <script src="random-nav.js" defer></script>
   <script src="contact-nudge.js" defer></script>

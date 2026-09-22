@@ -219,6 +219,11 @@ header nav a:hover {
   margin: 0;
 }
 
+.proj-film:fullscreen .proj-player-ratio iframe,
+.proj-film:fullscreen .proj-player-ratio video {
+  object-fit: contain;
+}
+
 .proj-film:fullscreen .proj-controls {
   position: absolute;
   left: 0;
@@ -273,13 +278,15 @@ header nav a:hover {
   height: 100%;
 }
 
-.proj-player-ratio iframe {
+.proj-player-ratio iframe,
+.proj-player-ratio video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   border: none;
   display: block;
+  object-fit: cover;
 }
 
 .proj-overlay-play {

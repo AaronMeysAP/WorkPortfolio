@@ -61,13 +61,14 @@
       </div>
 
       <div class="proj-player-ratio">
-        <iframe
-          id="youtube-frame"
-          data-youtube-id="g0kUqQ-_JOg"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          frameborder="0">
-        </iframe>
+        <video
+          class="proj-native-video"
+          preload="metadata"
+          playsinline
+          poster="images/SNC - Promotional Animation/snc-video-poster.webp">
+          <source src="images/SNC - Promotional Animation/snc-video-full.webm" type="video/webm" />
+          <source src="images/SNC - Promotional Animation/snc-video-full.mp4" type="video/mp4" />
+        </video>
         <button class="proj-overlay-play" id="overlayPlay" aria-label="Play">
           <svg viewBox="0 0 48 48" fill="none">
             <polygon points="16,8 40,24 16,40" fill="white"/>

@@ -159,18 +159,21 @@ header nav a.active {
 }
 
 .grid-item img,
-.grid-item iframe {
+.grid-item iframe,
+.grid-item video {
   width: 100%;
   height: 100%;
   display: block;
   border: none;
 }
 
-.grid-item img {
+.grid-item img,
+.grid-item video {
   object-fit: cover;
 }
 
-.grid-item iframe {
+.grid-item iframe,
+.grid-item video {
   pointer-events: none;
 }
 

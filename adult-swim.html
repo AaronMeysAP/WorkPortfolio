@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
+  <style>
+    .proj-player-ratio { aspect-ratio: 1 / 1 !important; }
+  </style>
 </head>
 <body>
 
@@ -45,7 +48,7 @@
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/adult-swim/03.webp" alt="Adult Swim" />
+        <img src="images/adult-swim/03.webp" alt="3D render of two clawed hands making a rock-on gesture, dripping red and black liquid" />
       </div>
 
     </div>
@@ -58,13 +61,14 @@
       </div>
 
       <div class="proj-player-ratio">
-        <iframe
-          id="vimeo-frame"
-          data-vimeo-id="1213536253"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          frameborder="0">
-        </iframe>
+        <video
+          class="proj-native-video"
+          preload="metadata"
+          playsinline
+          poster="images/adult-swim/logo-animation-full-poster.webp">
+          <source src="images/adult-swim/logo-animation-full.webm" type="video/webm" />
+          <source src="images/adult-swim/logo-animation-full.mp4" type="video/mp4" />
+        </video>
         <button class="proj-overlay-play" id="overlayPlay" aria-label="Play">
           <svg viewBox="0 0 48 48" fill="none">
             <polygon points="16,8 40,24 16,40" fill="white"/>
@@ -110,11 +114,11 @@
     <div class="proj-row proj-row--mid">
 
       <div class="proj-panel proj-img proj-img--wide">
-        <img src="images/adult-swim/04.webp" alt="Adult Swim 01" loading="lazy" decoding="async" />
+        <img src="images/adult-swim/04.webp" alt="Adult Swim [as] logo rendered in dripping red and black liquid" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/adult-swim/02.webp" alt="Adult Swim 02" loading="lazy" decoding="async" />
+        <img src="images/adult-swim/02.webp" alt="Close-up of a rippling glossy red and black liquid surface" loading="lazy" decoding="async" />
       </div>
 
     </div>
@@ -123,7 +127,6 @@
 
   </main>
 
-  <script src="https://player.vimeo.com/api/player.js" defer></script>
   <script src="project.js" defer></script>
   <script src="random-nav.js" defer></script>
   <script src="contact-nudge.js" defer></script>

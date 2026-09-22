@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;400;500&display=swap">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="project.css" />
+  <style>
+    .proj-player-ratio { aspect-ratio: 1 / 1 !important; }
+    .proj-player-ratio video { object-fit: contain; }
+  </style>
 </head>
 <body>
 
@@ -45,7 +49,7 @@
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Claymation - Character Animation/01.webp" alt="Claymation" />
+        <img src="images/Claymation - Character Animation/01.webp" alt="Small red claymation character with a ball-tipped antenna and one white eye" />
       </div>
 
     </div>
@@ -58,13 +62,14 @@
       </div>
 
       <div class="proj-player-ratio">
-        <iframe
-          id="vimeo-frame"
-          data-vimeo-id="1205973371"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-          frameborder="0">
-        </iframe>
+        <video
+          class="proj-native-video"
+          preload="metadata"
+          playsinline
+          poster="images/Claymation - Character Animation/claymation-video-poster.webp">
+          <source src="images/Claymation - Character Animation/claymation-video.webm" type="video/webm" />
+          <source src="images/Claymation - Character Animation/claymation-video.mp4" type="video/mp4" />
+        </video>
         <button class="proj-overlay-play" id="overlayPlay" aria-label="Play">
           <svg viewBox="0 0 48 48" fill="none">
             <polygon points="16,8 40,24 16,40" fill="white"/>
@@ -110,15 +115,15 @@
     <div class="proj-row proj-row--mid">
 
       <div class="proj-panel proj-img">
-        <img src="images/Claymation - Character Animation/02.webp" alt="Claymation" loading="lazy" decoding="async" />
+        <img src="images/Claymation - Character Animation/02.webp" alt="The red claymation character viewed from the side, its antenna curving back" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Claymation - Character Animation/03.webp" alt="Claymation" loading="lazy" decoding="async" />
+        <img src="images/Claymation - Character Animation/03.webp" alt="The claymation character in a 3D animation viewport with rigging and motion-path rings overlaid" loading="lazy" decoding="async" />
       </div>
 
       <div class="proj-panel proj-img">
-        <img src="images/Claymation - Character Animation/04.webp" alt="Claymation" loading="lazy" decoding="async" />
+        <img src="images/Claymation - Character Animation/04.webp" alt="A squashed red claymation character melted into a puddle on a wooden slab, with two more character slabs hanging in the background" loading="lazy" decoding="async" />
       </div>
 
     </div>
@@ -127,7 +132,6 @@
 
   </main>
 
-  <script src="https://player.vimeo.com/api/player.js" defer></script>
   <script src="project.js" defer></script>
   <script src="random-nav.js" defer></script>
   <script src="contact-nudge.js" defer></script>
